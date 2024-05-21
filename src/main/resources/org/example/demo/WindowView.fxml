@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.HelloWorldView">
+
+<VBox fx:id="rootPane" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo.WindowView">
     <children>
-        <Label fx:id="helloLabel"/>
-        <Button text="Hello!" onAction="#onHelloButtonClick"/>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
