@@ -25,6 +25,7 @@ public class HelloWorldView implements FxmlView<HelloWorldViewModel>, Initializa
     @FXML
     protected void onHelloButtonClick() {
         viewModel.setHelloMessage("Welcome to JavaFX Application!");
+        throw new RuntimeException("测试DefaultExceptionHandler");
     }
 
 }
