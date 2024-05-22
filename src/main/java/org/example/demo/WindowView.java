@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import org.example.demo.event.EventConsts;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,10 +20,8 @@ public class WindowView implements FxmlView<WindowViewModel>, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        MvvmFX.getNotificationCenter().subscribe("showMainView", (key, payload) -> {
-            Platform.runLater(() -> {
-                showMainView();
-            });
+        MvvmFX.getNotificationCenter().subscribe(EventConsts.ShowMainView.getKey(), (key, payload) -> {
+            showMainView();
         });
 
         showLoginView();
