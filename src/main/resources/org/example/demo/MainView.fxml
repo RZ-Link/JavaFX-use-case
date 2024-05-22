@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.MainView">
     <top>
 
@@ -14,4 +15,8 @@
     <center>
 
     </center>
+    <stylesheets>
+        <URL value="@css/index.css"/>
+    </stylesheets>
 </BorderPane>
+

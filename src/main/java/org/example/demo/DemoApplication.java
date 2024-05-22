@@ -1,5 +1,8 @@
 package org.example.demo;
 
+import atlantafx.base.theme.NordLight;
+import atlantafx.base.theme.PrimerDark;
+import atlantafx.base.theme.PrimerLight;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Application;
@@ -13,6 +16,8 @@ public class DemoApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        // AtlantaFX主题
+        Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
 
         Thread.currentThread().setUncaughtExceptionHandler(new DefaultExceptionHandler(stage));
 

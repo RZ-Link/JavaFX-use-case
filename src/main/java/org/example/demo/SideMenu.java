@@ -1,5 +1,6 @@
 package org.example.demo;
 
+import atlantafx.base.theme.Tweaks;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import de.saxsys.mvvmfx.FluentViewLoader;
