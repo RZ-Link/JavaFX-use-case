@@ -3,20 +3,58 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <?import java.net.URL?>
 <BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.MainView">
-    <top>
+    <left>
+        <TreeView showRoot="false">
+            <TreeItem value="Root">
+                <children>
+                    <TreeItem value="模块1">
+                        <children>
+                            <TreeItem value="模块1-1"/>
+                            <TreeItem value="模块1-2"/>
+                            <TreeItem value="模块1-3"/>
+                            <TreeItem value="模块1-4"/>
+                            <TreeItem value="模块1-5"/>
+                            <TreeItem value="模块1-6"/>
+                            <TreeItem value="模块1-7"/>
+                            <TreeItem value="模块1-8"/>
+                            <TreeItem value="模块1-9"/>
+                            <TreeItem value="模块1-10"/>
+                        </children>
+                    </TreeItem>
+                    <TreeItem value="模块2"/>
+                    <TreeItem value="模块3"/>
+                    <TreeItem value="模块4"/>
+                    <TreeItem value="模块5"/>
+                    <TreeItem value="模块6"/>
+                    <TreeItem value="模块7"/>
+                    <TreeItem value="模块8"/>
+                    <TreeItem value="模块9"/>
+                    <TreeItem value="模块10"/>
 
-    </top>
-    <bottom>
-
-    </bottom>
+                </children>
+            </TreeItem>
+        </TreeView>
+    </left>
     <center>
-
+        <TabPane>
+            <tabs>
+                <Tab text="模块1">
+                    <content>
+                        <Label text="Tab1"/>
+                    </content>
+                </Tab>
+                <Tab text="模块2">
+                    <content>
+                        <Label text="Tab2"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </center>
     <stylesheets>
-        <URL value="@css/index.css"/>
+        <URL value="@css/MainView.css"/>
     </stylesheets>
 </BorderPane>
 

@@ -4,6 +4,7 @@ import de.saxsys.mvvmfx.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.example.demo.event.EventConsts;
 
@@ -12,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class WindowView implements FxmlView<WindowViewModel>, Initializable {
     @FXML
-    private VBox rootPane;
+    private StackPane rootPane;
 
     @InjectViewModel
     private WindowViewModel viewModel;

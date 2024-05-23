@@ -41,6 +41,8 @@ public class SideMenu extends StackPane {
         rootItem.getChildren().addAll(child1, child2);
         // 创建TreeView并设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
+        // 不显示根节点
+        treeView.setShowRoot(false);
 
         // TreeCell设置自定义的样式
         treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {

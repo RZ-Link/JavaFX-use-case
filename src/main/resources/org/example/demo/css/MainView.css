@@ -1,0 +1,7 @@
+.tree-cell:hover {
+    -fx-background-color: lightblue;
+}
+
+.tree-cell:empty:hover {
+    -fx-background-color: transparent;
+}
