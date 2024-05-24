@@ -33,16 +33,9 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
             <columns>
-                <TableColumn text="姓名">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="name"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn text="年龄">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="age"/>
-                    </cellValueFactory>
-                </TableColumn>
+                <TableColumn fx:id="nameColumn" text="姓名"/>
+                <TableColumn fx:id="ageColumn" text="年龄"/>
+                <TableColumn fx:id="operationColumn" text="操作"/>
             </columns>
         </TableView>
     </HBox>
