@@ -21,10 +21,12 @@ public class WindowView implements FxmlView<WindowViewModel>, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // 订阅事件，打开管理页面
         MvvmFX.getNotificationCenter().subscribe(EventConsts.ShowMainView.getKey(), (key, payload) -> {
             showMainView();
         });
 
+        // 打开登录页面
         showLoginView();
     }
 

@@ -15,40 +15,24 @@ import java.util.Objects;
 
 public class DefaultExceptionHandler implements Thread.UncaughtExceptionHandler {
 
-    private final Stage stage;
-
-    public DefaultExceptionHandler(Stage stage) {
-        this.stage = stage;
-    }
-
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         e.printStackTrace();
-
+        // 创建弹窗
         var dialog = createExceptionDialog(e);
+        // 展示弹窗
         if (dialog != null) {
             dialog.showAndWait();
         }
     }
 
     private Alert createExceptionDialog(Throwable throwable) {
-        Objects.requireNonNull(throwable);
-
         var alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(throwable.getMessage());
-
-        try (var sw = new StringWriter(); var printWriter = new PrintWriter(sw)) {
-            throwable.printStackTrace(printWriter);
-
-            var label = new Label("Full stacktrace:");
+        try (var sw = new StringWriter(); var pw = new PrintWriter(sw)) {
+            throwable.printStackTrace(pw);
             var textArea = new TextArea(sw.toString());
-            var content = new VBox(5, label, textArea);
-
+            var content = new VBox(textArea);
             alert.getDialogPane().setExpandableContent(content);
-            alert.initOwner(stage);
-
             return alert;
         } catch (IOException e) {
             e.printStackTrace();

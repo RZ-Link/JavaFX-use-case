@@ -25,26 +25,24 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.Optional;
 
-// 侧边菜单
+// 左侧菜单
 public class SideMenu extends StackPane {
 
     public SideMenu() {
-
         // 创建根节点
-        TreeItem<String> rootItem = new TreeItem<>("Root");
+        TreeItem<String> rootItem = new TreeItem<>();
         // 展开根节点
         rootItem.setExpanded(true);
         // 创建子节点
-        TreeItem<String> child1 = new TreeItem<>("Child 1");
-        TreeItem<String> child2 = new TreeItem<>("Child 2");
-        // 将子节点添加到根节点
+        TreeItem<String> child1 = new TreeItem<>("模块1");
+        TreeItem<String> child2 = new TreeItem<>("模块2");
+        // 根节点添加子节点
         rootItem.getChildren().addAll(child1, child2);
-        // 创建TreeView并设置根节点
+        // 创建TreeView，设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
-        // 不显示根节点
+        // 隐藏根节点
         treeView.setShowRoot(false);
-
-        // TreeCell设置自定义的样式
+        // 设置TreeCell
         treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
             @Override
             public TreeCell<String> call(TreeView<String> stringTreeView) {
@@ -64,12 +62,14 @@ public class SideMenu extends StackPane {
             }
         });
 
+        // 监听用户选择模块变化，推送事件（更新窗口右侧页面）
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && newValue.isLeaf()) {
                 MvvmFX.getNotificationCenter().publish(EventConsts.SideMenuSelected.getKey(), newValue.getValue());
             }
         });
 
+        // StackPane添加TreeView
         getChildren().addAll(treeView);
     }
 }

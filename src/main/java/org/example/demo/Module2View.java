@@ -7,10 +7,10 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Child2View implements FxmlView<Child2ViewModel>, Initializable {
+public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
 
     @InjectViewModel
-    private Child2ViewModel viewModel;
+    private Module2ViewModel viewModel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

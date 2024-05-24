@@ -2,26 +2,20 @@ package org.example.demo;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import org.example.demo.entity.PersonEntity;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Child1View implements FxmlView<Child1ViewModel>, Initializable {
+public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
 
     @InjectViewModel
-    private Child1ViewModel viewModel;
+    private Module1ViewModel viewModel;
 
     @FXML
     private TableView<PersonEntity> tableView;

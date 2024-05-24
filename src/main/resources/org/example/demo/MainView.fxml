@@ -4,10 +4,12 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.MainView">
+<BorderPane fx:id="borderPane"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.demo.MainView">
     <left>
         <TreeView showRoot="false">
-            <TreeItem value="Root">
+            <TreeItem>
                 <children>
                     <TreeItem value="模块1">
                         <children>
@@ -32,25 +34,18 @@
                     <TreeItem value="模块8"/>
                     <TreeItem value="模块9"/>
                     <TreeItem value="模块10"/>
-
                 </children>
             </TreeItem>
         </TreeView>
     </left>
     <center>
         <TabPane>
-            <tabs>
-                <Tab text="模块1">
-                    <content>
-                        <Label text="Tab1"/>
-                    </content>
-                </Tab>
-                <Tab text="模块2">
-                    <content>
-                        <Label text="Tab2"/>
-                    </content>
-                </Tab>
-            </tabs>
+            <Tab text="模块1">
+                <Label text="模块1"/>
+            </Tab>
+            <Tab text="模块2">
+                <Label text="模块2"/>
+            </Tab>
         </TabPane>
     </center>
     <stylesheets>
