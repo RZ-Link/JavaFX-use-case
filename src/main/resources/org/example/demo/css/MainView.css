@@ -5,3 +5,7 @@
 .tree-cell:empty:hover {
     -fx-background-color: transparent;
 }
+
+.tree-view {
+    -fx-border-width: 0px;
+}
