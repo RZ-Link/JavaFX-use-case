@@ -1,19 +1,23 @@
 package org.example.demo;
 
+import atlantafx.base.controls.Card;
+import atlantafx.base.controls.ModalPane;
+import atlantafx.base.layout.ModalBox;
+import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.ViewTuple;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.stage.StageStyle;
 import org.example.demo.entity.PersonEntity;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -57,6 +61,7 @@ public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
                         Button editButton = new Button("编辑", FontIcon.of(Feather.EDIT));
                         editButton.setOnAction(event -> {
                             System.out.println("编辑" + item + getTableRow().getItem().getName());
+                            showEditDialog();
                         });
 
                         Button deleteButton = new Button("删除", FontIcon.of(Feather.TRASH));
@@ -87,6 +92,33 @@ public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
                 new PersonEntity(12L, "司马懿", 30)
         );
         tableView.setItems(data);
+    }
+
+    // 弹出编辑对话框
+    private void showEditDialog() {
+
+        ViewTuple<PersonEditView, PersonEditViewModel> load = FluentViewLoader.fxmlView(PersonEditView.class).load();
+        Dialog<PersonEntity> dialog = new Dialog<>();
+        dialog.setTitle("编辑");
+        dialog.getDialogPane().setContent(load.getView());
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                var viewModel = load.getViewModel();
+                var personEntity = new PersonEntity(Long.parseLong(viewModel.getId()), viewModel.getName(), Integer.parseInt(viewModel.getAge()));
+                return personEntity;
+            } else {
+                return null;
+            }
+        });
+
+        var result = dialog.showAndWait();
+        if (result.isPresent()) {
+            System.out.println(result.get().getId());
+            System.out.println(result.get().getName());
+            System.out.println(result.get().getAge());
+        }
+
     }
 
 

@@ -18,9 +18,9 @@ public class DefaultExceptionHandler implements Thread.UncaughtExceptionHandler 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         e.printStackTrace();
-        // 创建弹窗
+        // 创建对话框
         var dialog = createExceptionDialog(e);
-        // 展示弹窗
+        // 展示对话框
         if (dialog != null) {
             dialog.showAndWait();
         }

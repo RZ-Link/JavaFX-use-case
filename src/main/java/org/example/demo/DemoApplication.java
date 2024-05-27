@@ -15,10 +15,10 @@ import java.io.IOException;
 public class DemoApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         // 设置AtlantaFX主题
         Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
-        // 线程未捕获异常处理，弹窗提示
+        // 线程未捕获异常处理，对话框提示
         Thread.currentThread().setUncaughtExceptionHandler(new DefaultExceptionHandler());
         // 启动窗口
         final ViewTuple<WindowView, WindowViewModel> viewTuple = FluentViewLoader.fxmlView(WindowView.class).load();
