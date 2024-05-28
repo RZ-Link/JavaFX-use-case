@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.example.demo.event.EventConsts;
+import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.Optional;
@@ -54,7 +55,12 @@ public class SideMenu extends StackPane {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(item);
+                            setText(null);
+
+                            Label label = new Label(item);
+                            label.setGraphic(FontIcon.of(Feather.CHEVRON_DOWN)); // 设置图标
+                            label.setGraphicTextGap(10);
+                            setGraphic(label);
                         }
                     }
                 };
