@@ -9,3 +9,8 @@
 .tree-view {
     -fx-border-width: 0px;
 }
+
+#top-h-box {
+    -fx-background-color: #f0f0f0;
+}
+
