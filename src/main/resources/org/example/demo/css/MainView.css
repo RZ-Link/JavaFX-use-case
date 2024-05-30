@@ -14,3 +14,10 @@
     -fx-background-color: #f0f0f0;
 }
 
+/*隐藏treeview默认折叠图标*/
+#side-tree .tree-cell > .tree-disclosure-node > .arrow {
+    -fx-shape: "";
+    -fx-scale-shape: true;
+    -fx-background-color: transparent;
+}
+

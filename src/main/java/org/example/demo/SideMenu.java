@@ -37,12 +37,18 @@ public class SideMenu extends StackPane {
         // 创建子节点
         TreeItem<String> child1 = new TreeItem<>("模块1");
         TreeItem<String> child2 = new TreeItem<>("模块2");
+        TreeItem<String> child3 = new TreeItem<>("模块3");
+        TreeItem<String> subChild31 = new TreeItem<>("模块3-1");
+        TreeItem<String> subChild32 = new TreeItem<>("模块3-2");
+        child3.getChildren().addAll(subChild31,subChild32);
         // 根节点添加子节点
-        rootItem.getChildren().addAll(child1, child2);
+        rootItem.getChildren().addAll(child1, child2, child3);
         // 创建TreeView，设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
         // 隐藏根节点
         treeView.setShowRoot(false);
+        //隐藏默认折叠图标
+        treeView.setId("side-tree");
         // 设置TreeCell
         treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
             @Override
@@ -64,6 +70,12 @@ public class SideMenu extends StackPane {
                         }
                     }
                 };
+                //存在子模块时点击折叠/展开菜单
+                treeCell.setOnMouseClicked(event -> {
+                    if (!treeCell.isEmpty()) {
+                        treeCell.getTreeItem().setExpanded(!treeCell.getTreeItem().isExpanded());
+                    }
+                });
                 return treeCell;
             }
         });
