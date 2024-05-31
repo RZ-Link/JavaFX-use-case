@@ -34,14 +34,15 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
 
         // 订阅左侧菜单选择事件，右侧标签展示模块页面
         MvvmFX.getNotificationCenter().subscribe(EventConsts.SideMenuSelected.getKey(), (key, payload) -> {
-            Tab tab = new Tab((String) payload[0]);
-            //查询tabpane中是否已存在待显示tab，存在则直接切换到tab界面
+            Tab tab;
+            // 查询TabPane是否已经存在需要展示的Tab。如果已经存在，直接切换。
             Optional<Tab> tabOptional = tabPane.getTabs().stream()
-                    .filter(t -> StrUtil.equals(t.getText(), (String)payload[0]))
+                    .filter(t -> StrUtil.equals(t.getText(), (String) payload[0]))
                     .findFirst();
             if (tabOptional.isPresent()) {
                 tab = tabOptional.get();
             } else {
+                tab = new Tab((String) payload[0]);
                 switch ((String) payload[0]) {
                     case "模块1":
                         tab.setContent(FluentViewLoader.fxmlView(Module1View.class).load().getView());
@@ -54,7 +55,6 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 }
                 tabPane.getTabs().add(tab);
             }
-            // tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
     }
