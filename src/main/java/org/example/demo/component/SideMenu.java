@@ -33,7 +33,7 @@ public class SideMenu extends StackPane {
         treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
             @Override
             public TreeCell<String> call(TreeView<String> stringTreeView) {
-                TreeCell treeCell = new TreeCell<String>() {
+                TreeCell<String> treeCell = new TreeCell<String>() {
                     @Override
                     protected void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
