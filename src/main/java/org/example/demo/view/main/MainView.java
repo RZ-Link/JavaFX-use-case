@@ -1,4 +1,4 @@
-package org.example.demo;
+package org.example.demo.view.main;
 
 import cn.hutool.core.util.StrUtil;
 import de.saxsys.mvvmfx.*;
@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import org.example.demo.view.module1.Module1View;
+import org.example.demo.view.module2.Module2View;
+import org.example.demo.component.SideMenu;
 import org.example.demo.event.EventConsts;
 
 import java.net.URL;

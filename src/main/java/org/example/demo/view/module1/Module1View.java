@@ -1,8 +1,5 @@
-package org.example.demo;
+package org.example.demo.view.module1;
 
-import atlantafx.base.controls.Card;
-import atlantafx.base.controls.ModalPane;
-import atlantafx.base.layout.ModalBox;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -15,9 +12,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import javafx.stage.StageStyle;
 import org.example.demo.entity.PersonEntity;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;

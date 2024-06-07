@@ -1,4 +1,4 @@
-package org.example.demo;
+package org.example.demo.view.login;
 
 import de.saxsys.mvvmfx.ViewModel;
 

@@ -1,6 +1,5 @@
-package org.example.demo;
+package org.example.demo.view.module1;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.*;
 

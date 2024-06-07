@@ -1,10 +1,8 @@
-package org.example.demo;
+package org.example.demo.view.login;
 
 import de.saxsys.mvvmfx.*;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.VBox;
 import org.example.demo.event.EventConsts;
 
 import java.net.URL;

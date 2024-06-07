@@ -1,30 +1,12 @@
-package org.example.demo;
+package org.example.demo.component;
 
-import atlantafx.base.theme.Tweaks;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONObject;
-import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.MvvmFX;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.util.Callback;
-import javafx.util.Duration;
 import org.example.demo.event.EventConsts;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
-
-import java.util.Optional;
 
 // 左侧菜单
 public class SideMenu extends StackPane {

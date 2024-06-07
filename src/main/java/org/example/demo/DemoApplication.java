@@ -1,16 +1,14 @@
 package org.example.demo;
 
 import atlantafx.base.theme.NordLight;
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.PrimerLight;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import org.example.demo.view.window.WindowView;
+import org.example.demo.view.window.WindowViewModel;
 
 public class DemoApplication extends Application {
 

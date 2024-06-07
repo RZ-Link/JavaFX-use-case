@@ -9,7 +9,7 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <GridPane xmlns:fx="http://javafx.com/fxml"
-          fx:controller="org.example.demo.PersonEditView"
+          fx:controller="org.example.demo.view.module1.PersonEditView"
           hgap="4.0"
           vgap="8.0">
     <padding>

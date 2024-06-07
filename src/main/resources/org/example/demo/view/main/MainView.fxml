@@ -8,7 +8,7 @@
 <?import javafx.geometry.Insets?>
 <BorderPane fx:id="borderPane"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.demo.MainView">
+            fx:controller="org.example.demo.view.main.MainView">
     <left>
         <TreeView showRoot="false">
             <TreeItem>
@@ -63,7 +63,7 @@
         </HBox>
     </top>
     <stylesheets>
-        <URL value="@css/MainView.css"/>
+        <URL value="@../../css/MainView.css"/>
     </stylesheets>
 </BorderPane>
 
