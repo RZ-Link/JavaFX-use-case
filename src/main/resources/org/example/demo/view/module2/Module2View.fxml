@@ -8,7 +8,7 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.demo.view.module2.Module2View"
+      fx:id="vbox"
       alignment="CENTER"
       spacing="5">
-    <Label text="模块2"/>
 </VBox>
