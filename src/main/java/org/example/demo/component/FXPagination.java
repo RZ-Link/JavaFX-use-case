@@ -38,14 +38,15 @@ public class FXPagination extends HBox {
     private Label totalPageCountLabel;
 
     /**
-     * @param totalItemCount       总条目数
-     * @param pageSize             每页显示条目个数
-     * @param currentPage          当前页数
-     * @param pageSizes            每页显示个数选择器的选项设置
-     * @param prevButtonClickEvent 用户点击上一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(prevButtonEvent);
-     * @param nextButtonClickEvent 用户点击下一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(nextButtonEvent);
+     * @param totalItemCount        总条目数
+     * @param pageSize              每页显示条目个数
+     * @param currentPage           当前页数
+     * @param pageSizes             每页显示个数选择器的选项设置
+     * @param prevButtonClickEvent  用户点击上一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(prevButtonEvent);
+     * @param nextButtonClickEvent  用户点击下一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(nextButtonEvent);
+     * @param gotoEnterPressedEvent 用户回车跳转事件触发MvvmFX.getNotificationCenter().publish(gotoEnterPressedEvent);
      */
-    public FXPagination(Long totalItemCount, Long pageSize, Long currentPage, ArrayList<Long> pageSizes, String prevButtonClickEvent, String nextButtonClickEvent) {
+    public FXPagination(Long totalItemCount, Long pageSize, Long currentPage, ArrayList<Long> pageSizes, String prevButtonClickEvent, String nextButtonClickEvent, String gotoEnterPressedEvent) {
 
         this.totalItemCount = new SimpleLongProperty(totalItemCount);
         this.pageSize = new SimpleLongProperty(pageSize);
@@ -74,7 +75,7 @@ public class FXPagination extends HBox {
         this.prevButton = new Button();
         this.prevButton.setGraphic(FontIcon.of(Feather.CHEVRON_LEFT));
         this.prevButton.setOnAction(event -> {
-            MvvmFX.getNotificationCenter().publish(prevButtonClickEvent, this.pageSize.get(), this.currentPage.get());
+            MvvmFX.getNotificationCenter().publish(prevButtonClickEvent, this.pageSize.get(), this.currentPage.get() - 1);
         });
         if (this.currentPage.get() == 1) {
             this.prevButton.setDisable(true);
@@ -88,7 +89,7 @@ public class FXPagination extends HBox {
         this.nextButton = new Button();
         this.nextButton.setGraphic(FontIcon.of(Feather.CHEVRON_RIGHT));
         this.nextButton.setOnAction(event -> {
-            MvvmFX.getNotificationCenter().publish(nextButtonClickEvent, this.pageSize.get(), this.currentPage.get());
+            MvvmFX.getNotificationCenter().publish(nextButtonClickEvent, this.pageSize.get(), this.currentPage.get() + 1);
         });
         Long pageCount = Math.round(Math.ceil((double) this.totalItemCount.get() / (double) this.pageSize.get()));
         if (this.currentPage.get() == pageCount) {
@@ -106,8 +107,7 @@ public class FXPagination extends HBox {
                     String text = this.gotoTextField.getText();
                     Long gotoPage = Long.parseLong(text);
                     if (gotoPage >= 1 && gotoPage <= Math.round(Math.ceil((double) this.totalItemCount.get() / (double) this.pageSize.get()))) {
-                        this.currentPage.set(gotoPage);
-                        this.update(this.totalItemCount.get(), this.pageSize.get(), this.currentPage.get());
+                        MvvmFX.getNotificationCenter().publish(gotoEnterPressedEvent, this.pageSize.get(), gotoPage);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -128,6 +128,10 @@ public class FXPagination extends HBox {
         this.pageSize.set(pageSize);
         this.currentPage.set(currentPage);
 
+        this.update();
+    }
+
+    private void update() {
         this.totalItemCountLabel.setText(StrUtil.format("Total item count {}", this.totalItemCount.get()));
 
         if (this.currentPage.get() == 1) {

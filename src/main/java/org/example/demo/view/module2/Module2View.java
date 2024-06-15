@@ -3,6 +3,8 @@ package org.example.demo.view.module2;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.MvvmFX;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -28,18 +30,26 @@ public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
                 1L,
                 new ArrayList<>(Arrays.asList(10L, 20L)),
                 "prevButtonClickEvent",
-                "nextButtonClickEvent");
+                "nextButtonClickEvent",
+                "gotoEnterPressedEvent");
 
+        // 用户点击上一页按钮事件
         MvvmFX.getNotificationCenter().subscribe("prevButtonClickEvent", (key, payload) -> {
             Long pageSize = (long) payload[0];
-            Long currentPage = (long) payload[1];
-            fxPagination.update(1000L, pageSize, currentPage - 1L);
+            Long gotoPage = (long) payload[1];
+            fxPagination.update(1000L, pageSize, gotoPage);
         });
-
+        // 用户点击下一页按钮事件
         MvvmFX.getNotificationCenter().subscribe("nextButtonClickEvent", (key, payload) -> {
             Long pageSize = (long) payload[0];
-            Long currentPage = (long) payload[1];
-            fxPagination.update(1000L, pageSize, currentPage + 1L);
+            Long gotoPage = (long) payload[1];
+            fxPagination.update(1000L, pageSize, gotoPage);
+        });
+        // 用户回车跳转事件
+        MvvmFX.getNotificationCenter().subscribe("gotoEnterPressedEvent", (key, payload) -> {
+            Long pageSize = (long) payload[0];
+            Long gotoPage = (long) payload[1];
+            fxPagination.update(1000L, pageSize, gotoPage);
         });
 
         vbox.getChildren().add(fxPagination);
