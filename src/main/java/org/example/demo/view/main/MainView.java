@@ -11,6 +11,7 @@ import org.example.demo.view.module1.Module1View;
 import org.example.demo.view.module2.Module2View;
 import org.example.demo.component.SideMenu;
 import org.example.demo.event.EventConsts;
+import org.example.demo.view.module3.Module31View;
 
 import java.net.URL;
 import java.util.Optional;
@@ -52,6 +53,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                         break;
                     case "模块2":
                         tab.setContent(FluentViewLoader.fxmlView(Module2View.class).load().getView());
+                        break;
+                    case "模块3-1":
+                        tab.setContent(FluentViewLoader.fxmlView(Module31View.class).load().getView());
                         break;
                     default:
                         return;
