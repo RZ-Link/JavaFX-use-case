@@ -13,6 +13,7 @@ import org.example.demo.component.FXPagination;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
@@ -22,36 +23,15 @@ public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
 
     @FXML
     private VBox vbox;
+    @FXML
+    private FXPagination fxPagination;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FXPagination fxPagination = new FXPagination(1000L,
-                10L,
-                1L,
-                new ArrayList<>(Arrays.asList(10L, 20L)),
-                "prevButtonClickEvent",
-                "nextButtonClickEvent",
-                "gotoEnterPressedEvent");
-
-        // 用户点击上一页按钮事件
-        MvvmFX.getNotificationCenter().subscribe("prevButtonClickEvent", (key, payload) -> {
-            Long pageSize = (long) payload[0];
-            Long gotoPage = (long) payload[1];
-            fxPagination.update(1000L, pageSize, gotoPage);
-        });
-        // 用户点击下一页按钮事件
-        MvvmFX.getNotificationCenter().subscribe("nextButtonClickEvent", (key, payload) -> {
-            Long pageSize = (long) payload[0];
-            Long gotoPage = (long) payload[1];
-            fxPagination.update(1000L, pageSize, gotoPage);
-        });
-        // 用户回车跳转事件
-        MvvmFX.getNotificationCenter().subscribe("gotoEnterPressedEvent", (key, payload) -> {
-            Long pageSize = (long) payload[0];
-            Long gotoPage = (long) payload[1];
-            fxPagination.update(1000L, pageSize, gotoPage);
-        });
-
-        vbox.getChildren().add(fxPagination);
+        fxPagination.init(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
+                (pageSize, currentPage) -> {
+                    fxPagination.update(fxPagination.getTotalItemCount().get(), pageSize, currentPage);
+                });
+        fxPagination.update(1000L, 100L, 1L);
     }
 }

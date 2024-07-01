@@ -1,8 +1,6 @@
 package org.example.demo.component;
 
 import cn.hutool.core.util.StrUtil;
-import de.saxsys.mvvmfx.MvvmFX;
-import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,14 +9,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import org.example.demo.event.EventConsts;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-
+@Data
 public class FXPagination extends HBox {
 
     // 总条目数
@@ -27,6 +28,8 @@ public class FXPagination extends HBox {
     private SimpleLongProperty pageSize;
     // 当前页数
     private SimpleLongProperty currentPage;
+    // currentPage改变时触发
+    private BiConsumer<Long, Long> currentChange;
 
     private Label totalItemCountLabel;
     private ComboBox<String> pageSizeComboBox;
@@ -37,51 +40,43 @@ public class FXPagination extends HBox {
     private TextField gotoTextField;
     private Label totalPageCountLabel;
 
-    /**
-     * @param totalItemCount        总条目数
-     * @param pageSize              每页显示条目个数
-     * @param currentPage           当前页数
-     * @param pageSizes             每页显示个数选择器的选项设置
-     * @param prevButtonClickEvent  用户点击上一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(prevButtonEvent);
-     * @param nextButtonClickEvent  用户点击下一页按钮改变当前页时触发MvvmFX.getNotificationCenter().publish(nextButtonEvent);
-     * @param gotoEnterPressedEvent 用户回车跳转事件触发MvvmFX.getNotificationCenter().publish(gotoEnterPressedEvent);
-     */
-    public FXPagination(Long totalItemCount, Long pageSize, Long currentPage, ArrayList<Long> pageSizes, String prevButtonClickEvent, String nextButtonClickEvent, String gotoEnterPressedEvent) {
 
-        this.totalItemCount = new SimpleLongProperty(totalItemCount);
-        this.pageSize = new SimpleLongProperty(pageSize);
-        this.currentPage = new SimpleLongProperty(currentPage);
+    public FXPagination() {
+
+        this.totalItemCount = new SimpleLongProperty(0L);
+        this.pageSize = new SimpleLongProperty(10L);
+        this.currentPage = new SimpleLongProperty(1L);
+        this.currentChange = (pageSize, currentPage) -> {
+            this.update(this.totalItemCount.get(), pageSize, currentPage);
+        };
 
         this.totalItemCountLabel = new Label(StrUtil.format("Total item count {}", this.totalItemCount.get()));
 
         this.pageSizeComboBox = new ComboBox<>();
-        for (Long item : pageSizes) {
+        for (Long item : List.of(10L, 20L, 30L, 40L, 50L, 100L)) {
             this.pageSizeComboBox.getItems().add(StrUtil.format("{}/page", item));
         }
-        this.pageSizeComboBox.setValue(StrUtil.format("{}/page", pageSize));
+        this.pageSizeComboBox.setValue(StrUtil.format("{}/page", pageSize.get()));
         this.pageSizeComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            Long newPageSize = Long.valueOf(newValue.replace("/page", ""));
-            this.pageSize.set(newPageSize);
+            if (newValue != null) {
+                long newPageSize = Long.parseLong(newValue.replace("/page", ""));
+                this.pageSize.set(newPageSize);
 
-            Long newPageCount = Math.round(Math.ceil((double) this.totalItemCount.get() / (double) newPageSize));
-            if (this.currentPage.get() > newPageCount) {
-                this.currentPage.set(newPageCount);
+                long newPageCount = this.getPageCount(this.totalItemCount.get(), newPageSize);
+                if (this.currentPage.get() > newPageCount) {
+                    this.currentPage.set(newPageCount);
+                }
+
+                this.update(this.totalItemCount.get(), this.pageSize.get(), this.currentPage.get());
             }
-
-            this.update(this.totalItemCount.get(), this.pageSize.get(), this.currentPage.get());
-
         });
 
         this.prevButton = new Button();
         this.prevButton.setGraphic(FontIcon.of(Feather.CHEVRON_LEFT));
         this.prevButton.setOnAction(event -> {
-            MvvmFX.getNotificationCenter().publish(prevButtonClickEvent, this.pageSize.get(), this.currentPage.get() - 1);
+            this.currentChange.accept(this.pageSize.get(), this.currentPage.get() - 1);
         });
-        if (this.currentPage.get() == 1) {
-            this.prevButton.setDisable(true);
-        } else {
-            this.prevButton.setDisable(false);
-        }
+        this.prevButton.setDisable(this.currentPage.get() <= 1);
 
         this.currentPageButton = new Button(String.valueOf(this.currentPage.get()));
         this.currentPageButton.setDisable(true);
@@ -89,14 +84,10 @@ public class FXPagination extends HBox {
         this.nextButton = new Button();
         this.nextButton.setGraphic(FontIcon.of(Feather.CHEVRON_RIGHT));
         this.nextButton.setOnAction(event -> {
-            MvvmFX.getNotificationCenter().publish(nextButtonClickEvent, this.pageSize.get(), this.currentPage.get() + 1);
+            this.currentChange.accept(this.pageSize.get(), this.currentPage.get() + 1);
         });
-        Long pageCount = Math.round(Math.ceil((double) this.totalItemCount.get() / (double) this.pageSize.get()));
-        if (this.currentPage.get() == pageCount) {
-            this.nextButton.setDisable(true);
-        } else {
-            this.nextButton.setDisable(false);
-        }
+        long pageCount = this.getPageCount();
+        this.nextButton.setDisable(this.currentPage.get() >= pageCount);
 
         this.gotoLabel = new Label("Go to");
 
@@ -105,9 +96,9 @@ public class FXPagination extends HBox {
             if (event.getCode() == KeyCode.ENTER) {
                 try {
                     String text = this.gotoTextField.getText();
-                    Long gotoPage = Long.parseLong(text);
-                    if (gotoPage >= 1 && gotoPage <= Math.round(Math.ceil((double) this.totalItemCount.get() / (double) this.pageSize.get()))) {
-                        MvvmFX.getNotificationCenter().publish(gotoEnterPressedEvent, this.pageSize.get(), gotoPage);
+                    long gotoPage = Long.parseLong(text);
+                    if (gotoPage >= 1 && gotoPage <= this.getPageCount()) {
+                        this.currentChange.accept(this.pageSize.get(), gotoPage);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -123,33 +114,60 @@ public class FXPagination extends HBox {
         this.setSpacing(5);
     }
 
+    /**
+     * @param pageSizes     每页显示个数选择器的选项设置
+     * @param currentChange currentPage 改变时触发
+     */
+    public void init(ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+        if (pageSizes != null && !pageSizes.isEmpty()) {
+            this.pageSizeComboBox.getItems().clear();
+            for (Long item : pageSizes) {
+                this.pageSizeComboBox.getItems().add(StrUtil.format("{}/page", item));
+            }
+            this.pageSizeComboBox.setValue(StrUtil.format("{}/page", pageSizes.get(0)));
+        }
+        if (currentChange != null) {
+            this.currentChange = currentChange;
+        }
+    }
+
+    /**
+     * 更新数据 & UI
+     *
+     * @param totalItemCount 总条目数
+     * @param pageSize       每页显示条目个数
+     * @param currentPage    当前页数
+     */
     public void update(Long totalItemCount, Long pageSize, Long currentPage) {
+        // 更新数据
         this.totalItemCount.set(totalItemCount);
         this.pageSize.set(pageSize);
         this.currentPage.set(currentPage);
-
-        this.update();
-    }
-
-    private void update() {
+        // 更新UI
         this.totalItemCountLabel.setText(StrUtil.format("Total item count {}", this.totalItemCount.get()));
-
-        if (this.currentPage.get() == 1) {
-            this.prevButton.setDisable(true);
-        } else {
-            this.prevButton.setDisable(false);
-        }
-
+        this.prevButton.setDisable(this.currentPage.get() <= 1);
         this.currentPageButton.setText(String.valueOf(this.currentPage.get()));
-
-        Long pageCount = Math.round(Math.ceil((double) this.totalItemCount.get() / (double) this.pageSize.get()));
-        if (this.currentPage.get() == pageCount) {
-            this.nextButton.setDisable(true);
-        } else {
-            this.nextButton.setDisable(false);
-        }
-
+        long pageCount = this.getPageCount();
+        this.nextButton.setDisable(this.currentPage.get() >= pageCount);
         this.totalPageCountLabel.setText(StrUtil.format("Total page count {}", pageCount));
-
     }
+
+
+    /**
+     * @param totalItemCount 总条目数
+     * @param pageSize       每页显示条目个数
+     * @return 总页数
+     */
+    private Long getPageCount(Long totalItemCount, Long pageSize) {
+        long pageCount = totalItemCount / pageSize;
+        if (totalItemCount % pageSize > 0) {
+            pageCount++;
+        }
+        return pageCount;
+    }
+
+    private Long getPageCount() {
+        return this.getPageCount(this.totalItemCount.get(), this.pageSize.get());
+    }
+
 }
