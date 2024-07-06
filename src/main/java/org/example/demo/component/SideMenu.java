@@ -4,12 +4,16 @@ import de.saxsys.mvvmfx.MvvmFX;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
-import org.example.demo.event.EventConsts;
+import org.example.demo.view.main.MainView;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.util.function.Consumer;
+
 // 左侧菜单
 public class SideMenu extends StackPane {
+
+    private MainView mainView;
 
     public SideMenu() {
         // 创建根节点
@@ -66,11 +70,18 @@ public class SideMenu extends StackPane {
         // 监听用户选择模块变化，推送事件（更新窗口右侧页面）
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && newValue.isLeaf()) {
-                MvvmFX.getNotificationCenter().publish(EventConsts.SideMenuSelected.getKey(), newValue.getValue());
+                if (mainView != null) {
+                    mainView.updateTabPane(newValue.getValue());
+                }
             }
         });
 
         // StackPane添加TreeView
         getChildren().addAll(treeView);
     }
+
+    public void init(MainView mainView) {
+        this.mainView = mainView;
+    }
+
 }

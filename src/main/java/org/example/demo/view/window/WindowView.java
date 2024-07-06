@@ -4,7 +4,6 @@ import de.saxsys.mvvmfx.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
-import org.example.demo.event.EventConsts;
 import org.example.demo.view.login.LoginView;
 import org.example.demo.view.login.LoginViewModel;
 import org.example.demo.view.main.MainView;
@@ -22,25 +21,21 @@ public class WindowView implements FxmlView<WindowViewModel>, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // 订阅事件，打开管理页面
-        MvvmFX.getNotificationCenter().subscribe(EventConsts.ShowMainView.getKey(), (key, payload) -> {
-            showMainView();
-        });
-
         // 打开登录页面
         showLoginView();
     }
 
-    private void showLoginView() {
+    public void showLoginView() {
         rootPane.getChildren().clear();
         ViewTuple<LoginView, LoginViewModel> viewTuple = FluentViewLoader.fxmlView(LoginView.class).load();
+        viewTuple.getViewModel().setWindowView(this);
         rootPane.getChildren().add(viewTuple.getView());
     }
 
-    private void showMainView() {
+    public void showMainView() {
         rootPane.getChildren().clear();
         ViewTuple<MainView, MainViewModel> viewTuple = FluentViewLoader.fxmlView(MainView.class).load();
+        viewTuple.getViewModel().setWindowView(this);
         rootPane.getChildren().add(viewTuple.getView());
     }
 

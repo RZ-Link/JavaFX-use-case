@@ -3,7 +3,6 @@ package org.example.demo.view.login;
 import de.saxsys.mvvmfx.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import org.example.demo.event.EventConsts;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +19,6 @@ public class LoginView implements FxmlView<LoginViewModel>, Initializable {
 
     @FXML
     protected void onLoginButtonClick() {
-        // 推送事件，展示管理页面
-        MvvmFX.getNotificationCenter().publish(EventConsts.ShowMainView.getKey());
+        viewModel.getWindowView().showMainView();
     }
 }
