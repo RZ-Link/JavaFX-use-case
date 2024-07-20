@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import org.example.demo.view.module1.Module1View;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.component.SideMenu;
-import org.example.demo.view.module3.Module31View;
+import org.example.demo.view.module3.ReadImageView;
 
 import java.net.URL;
 import java.util.Optional;
@@ -57,8 +57,8 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "分页组件demo":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
                     break;
-                case "模块3-1":
-                    tab.setContent(FluentViewLoader.fxmlView(Module31View.class).load().getView());
+                case "读取图片demo":
+                    tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
                     break;
                 default:
                     return;

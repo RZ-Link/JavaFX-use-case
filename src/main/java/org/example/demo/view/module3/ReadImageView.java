@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Module31View implements FxmlView<Module31ViewModel>, Initializable {
+public class ReadImageView implements FxmlView<ReadImageViewModel>, Initializable {
 
     @FXML
     private ImageView imageView;

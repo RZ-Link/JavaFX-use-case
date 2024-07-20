@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.module3.Module31View">
+      fx:controller="org.example.demo.view.module3.ReadImageView">
     <ScrollPane>
         <ImageView fx:id="imageView"/>
     </ScrollPane>
