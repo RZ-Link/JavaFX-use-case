@@ -115,10 +115,12 @@ public class FXPagination extends HBox {
     }
 
     /**
+     * 更新pageSizes & currentChange
+     *
      * @param pageSizes     每页显示个数选择器的选项设置
      * @param currentChange currentPage 改变时触发
      */
-    public void init(ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+    public void update(ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
         if (pageSizes != null && !pageSizes.isEmpty()) {
             this.pageSizeComboBox.getItems().clear();
             for (Long item : pageSizes) {

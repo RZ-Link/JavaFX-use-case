@@ -2,9 +2,6 @@ package org.example.demo.view.module2;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import de.saxsys.mvvmfx.MvvmFX;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -12,14 +9,13 @@ import org.example.demo.component.FXPagination;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
+public class PaginationView implements FxmlView<PaginationViewModel>, Initializable {
 
     @InjectViewModel
-    private Module2ViewModel viewModel;
+    private PaginationViewModel viewModel;
 
     @FXML
     private VBox vbox;
@@ -28,7 +24,7 @@ public class Module2View implements FxmlView<Module2ViewModel>, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fxPagination.init(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
+        fxPagination.update(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
                 (pageSize, currentPage) -> {
                     fxPagination.update(fxPagination.getTotalItemCount().get(), pageSize, currentPage);
                 });
