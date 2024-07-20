@@ -19,19 +19,19 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
+public class TableView implements FxmlView<TableViewModel>, Initializable {
 
     @InjectViewModel
-    private Module1ViewModel viewModel;
+    private TableViewModel viewModel;
 
     @FXML
-    private TableView<PersonEntity> tableView;
+    private javafx.scene.control.TableView<PersonEntity> tableView;
 
     @FXML
     private TableColumn<PersonEntity, String> nameColumn;
 
     @FXML
-    private TableColumn<PersonEntity, Integer> ageColumn;
+    private TableColumn<PersonEntity, Long> ageColumn;
 
     @FXML
     private TableColumn<PersonEntity, Long> operationColumn;
@@ -72,18 +72,18 @@ public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
             };
         });
         ObservableList<PersonEntity> data = FXCollections.observableArrayList(
-                new PersonEntity(1L, "曹操", 30),
-                new PersonEntity(2L, "刘备", 30),
-                new PersonEntity(3L, "司马懿", 30),
-                new PersonEntity(4L, "曹操", 30),
-                new PersonEntity(5L, "刘备", 30),
-                new PersonEntity(6L, "司马懿", 30),
-                new PersonEntity(7L, "曹操", 30),
-                new PersonEntity(8L, "刘备", 30),
-                new PersonEntity(9L, "司马懿", 30),
-                new PersonEntity(10L, "曹操", 30),
-                new PersonEntity(11L, "刘备", 30),
-                new PersonEntity(12L, "司马懿", 30)
+                new PersonEntity(1L, "曹操", 30L),
+                new PersonEntity(2L, "刘备", 30L),
+                new PersonEntity(3L, "司马懿", 30L),
+                new PersonEntity(4L, "曹操", 30L),
+                new PersonEntity(5L, "刘备", 30L),
+                new PersonEntity(6L, "司马懿", 30L),
+                new PersonEntity(7L, "曹操", 30L),
+                new PersonEntity(8L, "刘备", 30L),
+                new PersonEntity(9L, "司马懿", 30L),
+                new PersonEntity(10L, "曹操", 30L),
+                new PersonEntity(11L, "刘备", 30L),
+                new PersonEntity(12L, "司马懿", 30L)
         );
         tableView.setItems(data);
     }
@@ -99,7 +99,18 @@ public class Module1View implements FxmlView<Module1ViewModel>, Initializable {
         dialog.setResultConverter(buttonType -> {
             if (buttonType == ButtonType.OK) {
                 var viewModel = load.getViewModel();
-                var personEntity = new PersonEntity(Long.parseLong(viewModel.getId()), viewModel.getName(), Integer.parseInt(viewModel.getAge()));
+                var personEntity = new PersonEntity();
+                try {
+                    personEntity.setId(Long.parseLong(viewModel.getId()));
+                } catch (Exception e) {
+                    personEntity.setId(null);
+                }
+                personEntity.setName(viewModel.getName());
+                try {
+                    personEntity.setAge(Long.parseLong(viewModel.getAge()));
+                } catch (Exception e) {
+                    personEntity.setAge(null);
+                }
                 return personEntity;
             } else {
                 return null;

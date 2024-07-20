@@ -21,7 +21,7 @@ public class SideMenu extends StackPane {
         // 展开根节点
         rootItem.setExpanded(true);
         // 创建子节点
-        TreeItem<String> child1 = new TreeItem<>("模块1");
+        TreeItem<String> child1 = new TreeItem<>("表格demo");
         TreeItem<String> child2 = new TreeItem<>("分页组件demo");
         TreeItem<String> child3 = new TreeItem<>("模块3");
         TreeItem<String> subChild31 = new TreeItem<>("读取图片demo");

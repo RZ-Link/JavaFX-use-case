@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
-import org.example.demo.view.module1.Module1View;
+import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.component.SideMenu;
 import org.example.demo.view.module3.ReadImageView;
@@ -51,8 +51,8 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         } else {
             tab = new Tab(tabTitle);
             switch (tabTitle) {
-                case "模块1":
-                    tab.setContent(FluentViewLoader.fxmlView(Module1View.class).load().getView());
+                case "表格demo":
+                    tab.setContent(FluentViewLoader.fxmlView(TableView.class).load().getView());
                     break;
                 case "分页组件demo":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
