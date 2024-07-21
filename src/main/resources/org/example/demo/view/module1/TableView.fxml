@@ -44,6 +44,6 @@
         <Pagination pageCount="5" currentPageIndex="1" maxPageIndicatorCount="1"/>
     </HBox>
     <stylesheets>
-        <URL value="@../../css/Module1View.css"/>
+        <URL value="@../../css/TableView.css"/>
     </stylesheets>
 </VBox>
