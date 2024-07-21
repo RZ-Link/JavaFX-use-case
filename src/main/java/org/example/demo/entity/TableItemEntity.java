@@ -6,5 +6,5 @@ import lombok.Data;
 public class TableItemEntity {
     private String column1;
     private String column2;
-    private String column3;
+    private Long column3;
 }

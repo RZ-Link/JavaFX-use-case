@@ -61,7 +61,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "分页组件demo":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
                     break;
-                case "读取图片demo":
+                case "图片读取demo":
                     tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
                     break;
                 default:
