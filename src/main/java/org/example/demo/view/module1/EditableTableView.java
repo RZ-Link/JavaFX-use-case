@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.converter.LongStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.tableview2.cell.TextField2TableCell;
+import org.example.demo.converter.FXLongStringConverter;
 import org.example.demo.entity.PersonEntity;
 import org.example.demo.entity.TableItemEntity;
 
@@ -68,13 +69,3 @@ public class EditableTableView implements FxmlView<EditableTableViewModel>, Init
     }
 }
 
-class FXLongStringConverter extends LongStringConverter {
-    @Override
-    public Long fromString(String value) {
-        try {
-            return super.fromString(value);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-}
