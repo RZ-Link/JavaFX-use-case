@@ -8,6 +8,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import org.example.demo.view.module1.EditableTableView;
+import org.example.demo.view.module1.GroupingHeadTableView;
 import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.component.SideMenu;
@@ -57,6 +58,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "可编辑表格demo":
                     tab.setContent(FluentViewLoader.fxmlView(EditableTableView.class).load().getView());
+                    break;
+                case "表头分组表格demo":
+                    tab.setContent(FluentViewLoader.fxmlView(GroupingHeadTableView.class).load().getView());
                     break;
                 case "分页组件demo":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
