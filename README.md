@@ -1,4 +1,4 @@
-# JavaFX-demo
+# JavaFX-use-case
 
 CSS参考
 https://openjfx.io/javadoc/22/javafx.graphics/javafx/scene/doc-files/cssref.html
