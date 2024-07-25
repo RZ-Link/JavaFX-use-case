@@ -1,5 +1,6 @@
 package org.example.demo.view.main;
 
+import atlantafx.base.theme.Styles;
 import cn.hutool.core.util.StrUtil;
 import de.saxsys.mvvmfx.*;
 import javafx.fxml.FXML;
@@ -38,6 +39,8 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         sideMenu.init(this);
         // 右侧标签
         tabPane = new TabPane();
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
+        tabPane.getStyleClass().add(Styles.TABS_CLASSIC);
 
         borderPane.setLeft(sideMenu);
         borderPane.setCenter(tabPane);
