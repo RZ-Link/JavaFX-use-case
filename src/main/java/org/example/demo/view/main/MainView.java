@@ -15,6 +15,7 @@ import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.component.SideMenu;
 import org.example.demo.view.module3.ReadImageView;
+import org.example.demo.view.module4.DialogSampleView;
 
 import java.net.URL;
 import java.util.Optional;
@@ -74,6 +75,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "图片读取demo":
                     tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
+                    break;
+                case "弹窗demo":
+                    tab.setContent(FluentViewLoader.fxmlView(DialogSampleView.class).load().getView());
                     break;
                 default:
                     return;

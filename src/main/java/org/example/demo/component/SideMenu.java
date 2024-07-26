@@ -31,8 +31,11 @@ public class SideMenu extends StackPane {
         TreeItem<String> child3 = new TreeItem<>("资源读取demo");
         TreeItem<String> subChild31 = new TreeItem<>("图片读取demo");
         child3.getChildren().addAll(subChild31);
+        TreeItem<String> child4 = new TreeItem<>("响应组件demo");
+        TreeItem<String> subChild41 = new TreeItem<>("弹窗demo");
+        child4.getChildren().addAll(subChild41);
         // 根节点添加子节点
-        rootItem.getChildren().addAll(child1, child2, child3);
+        rootItem.getChildren().addAll(child1, child2, child3,child4);
         // 创建TreeView，设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
         // 隐藏根节点

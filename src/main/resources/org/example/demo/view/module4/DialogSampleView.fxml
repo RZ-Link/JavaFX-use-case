@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.example.demo.component.FXPagination?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo.view.module4.DialogSampleView"
+      fx:id="vbox"
+      alignment="CENTER"
+      spacing="5">
+        <children>
+            <HBox>
+                <children>
+                    <Button onAction="#onSuccessBtnAction" text="success"/>
+                    <Button onAction="#onInfoBtnAction" text="info"/>
+                    <Button onAction="#onWarnBtnAction" text="warn"/>
+                    <Button onAction="#onErrorBtnAction" text="error"/>
+                </children>
+            </HBox>
+        </children>
+</VBox>
