@@ -1,29 +1,16 @@
 package org.example.demo.view.module1;
 
 import atlantafx.base.theme.Styles;
-import cn.hutool.core.util.ReflectUtil;
-import com.sun.javafx.PlatformUtil;
 import de.saxsys.mvvmfx.FxmlView;
-import javafx.application.Platform;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.converter.LongStringConverter;
-import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.tableview2.cell.TextField2TableCell;
 import org.example.demo.converter.FXLongStringConverter;
-import org.example.demo.entity.PersonEntity;
 import org.example.demo.entity.TableItemEntity;
 
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ResourceBundle;
 

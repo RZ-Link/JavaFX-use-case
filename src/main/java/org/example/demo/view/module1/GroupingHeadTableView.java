@@ -1,21 +1,13 @@
 package org.example.demo.view.module1;
 
-import atlantafx.base.theme.Tweaks;
 import de.saxsys.mvvmfx.FxmlView;
-import javafx.application.Platform;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import org.example.demo.entity.TableItemEntity;
 
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class GroupingHeadTableView implements FxmlView<GroupingHeadTableViewModel>, Initializable {

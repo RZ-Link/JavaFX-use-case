@@ -2,19 +2,21 @@ package org.example.demo.view.main;
 
 import atlantafx.base.theme.Styles;
 import cn.hutool.core.util.StrUtil;
-import de.saxsys.mvvmfx.*;
+import de.saxsys.mvvmfx.FluentViewLoader;
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import org.example.demo.component.SideMenu;
 import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
 import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
-import org.example.demo.component.SideMenu;
 import org.example.demo.view.module3.ReadImageView;
 
 import java.net.URL;

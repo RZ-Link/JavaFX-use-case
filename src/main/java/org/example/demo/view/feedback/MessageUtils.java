@@ -1,10 +1,7 @@
 package org.example.demo.view.feedback;
 
 import cn.hutool.core.thread.ThreadUtil;
-import cn.hutool.core.thread.lock.LockUtil;
 import javafx.animation.FadeTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +13,7 @@ import javafx.stage.Popup;
 import javafx.util.Duration;
 import org.example.demo.DemoApplication;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class MessageUtils {
 

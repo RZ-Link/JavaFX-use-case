@@ -1,14 +1,14 @@
 package org.example.demo.component;
 
-import de.saxsys.mvvmfx.MvvmFX;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TreeCell;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import org.example.demo.view.main.MainView;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
-
-import java.util.function.Consumer;
 
 // 左侧菜单
 public class SideMenu extends StackPane {
