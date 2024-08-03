@@ -12,8 +12,13 @@ import org.example.demo.view.window.WindowViewModel;
 
 public class DemoApplication extends Application {
 
+    public static Stage stage;
+
     @Override
     public void start(Stage stage) {
+
+        DemoApplication.stage = stage;
+
         // 设置AtlantaFX主题
         Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
         // 线程未捕获异常处理，对话框提示

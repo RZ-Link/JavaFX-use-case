@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
@@ -74,6 +75,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "图片读取demo":
                     tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
+                    break;
+                case "消息提示":
+                    tab.setContent(FluentViewLoader.fxmlView(MessageView.class).load().getView());
                     break;
                 default:
                     return;
