@@ -1,6 +1,10 @@
 package org.example.demo.view.feedback;
 
 import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.thread.lock.LockUtil;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,15 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
+import javafx.util.Duration;
 import org.example.demo.DemoApplication;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MessageUtils {
 
-    private static final List<Popup> stack = Collections.synchronizedList(new ArrayList<>());
+    private static final ArrayList<Popup> stack = new ArrayList<>();
 
     // 弹出成功消息
     public static void success(String message) {
@@ -50,16 +53,26 @@ public class MessageUtils {
                 popup.setX(DemoApplication.stage.getX() + (DemoApplication.stage.getWidth() - popup.getWidth()) / 2);
             });
             // 垂直偏移
-            if (stack.isEmpty()) {
-                popup.setY(DemoApplication.stage.getY() + 5);
-            } else {
-                var previousPopup = stack.get(stack.size() - 1);
-                popup.setY(previousPopup.getY() + previousPopup.getHeight() + 5);
+            synchronized (MessageUtils.class) {
+                if (stack.isEmpty()) {
+                    popup.setY(DemoApplication.stage.getY() + 5);
+                } else {
+                    var previousPopup = stack.get(stack.size() - 1);
+                    popup.setY(previousPopup.getY() + previousPopup.getHeight() + 5);
+                }
             }
 
+            // 创建淡入效果
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), hbox);
+            fadeIn.setFromValue(0.0); // 完全透明开始
+            fadeIn.setToValue(1.0);   // 渐变完全不透明
+
             // 弹出消息
-            stack.add(popup);
+            synchronized (MessageUtils.class) {
+                stack.add(popup);
+            }
             popup.show(DemoApplication.stage);
+            fadeIn.play();
 
             // 消息3秒后自动消失
             ThreadUtil.execute(() -> {
@@ -69,8 +82,17 @@ public class MessageUtils {
 
                 } finally {
                     Platform.runLater(() -> {
-                        stack.remove(popup);
-                        popup.hide();
+                        // 创建淡出效果
+                        FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), hbox);
+                        fadeOut.setFromValue(1.0); // 完全不透明开始
+                        fadeOut.setToValue(0.0);   // 渐变完全透明
+                        fadeOut.setOnFinished(event -> {
+                            synchronized (MessageUtils.class) {
+                                stack.remove(popup);
+                            }
+                            popup.hide();
+                        });
+                        fadeOut.play();
                     });
                 }
             });

@@ -35,4 +35,9 @@ public class DemoApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    @Override
+    public void stop() {
+        System.exit(0);
+    }
 }
