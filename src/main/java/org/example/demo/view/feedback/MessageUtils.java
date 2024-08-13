@@ -1,6 +1,7 @@
 package org.example.demo.view.feedback;
 
 import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.util.StrUtil;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -21,6 +22,21 @@ public class MessageUtils {
 
     // 弹出成功消息
     public static void success(String message) {
+        open(message, "#f0f9eb",
+                "#e1f3d8",
+                "/org/example/demo/image/message/成功.png",
+                "#67c23a");
+    }
+
+    // 弹出错误消息
+    public static void error(String message) {
+        open(message, "#fef0f0",
+                "#fde2e2",
+                "/org/example/demo/image/message/错误.png",
+                "#f56c6c");
+    }
+
+    private static void open(String message, String backgroundColor, String borderColor, String iconUrl, String textFill) {
         Platform.runLater(() -> {
             // 创建消息
             Popup popup = new Popup();
@@ -31,15 +47,15 @@ public class MessageUtils {
             hbox.setSpacing(5);
             hbox.setMinWidth(0);
             hbox.setMaxWidth(500);
-            hbox.setStyle("-fx-background-color: #f4f4f5; -fx-background-radius: 4px; -fx-border-color: #e9e9eb; -fx-border-radius: 4px; -fx-border-width: 1px;");
+            hbox.setStyle(StrUtil.format("-fx-background-color: {}; -fx-background-radius: 4px; -fx-border-color: {}; -fx-border-radius: 4px; -fx-border-width: 1px;", backgroundColor, borderColor));
             // 消息图标
-            ImageView icon = new ImageView("/org/example/demo/image/message/成功.png");
+            ImageView icon = new ImageView(iconUrl);
             icon.setFitWidth(15);
             icon.setFitHeight(15);
             // 消息内容
             Label content = new Label(message);
             content.setWrapText(true);
-            content.setTextFill(Paint.valueOf("#909399"));
+            content.setTextFill(Paint.valueOf(textFill));
 
             hbox.getChildren().addAll(icon, content);
 

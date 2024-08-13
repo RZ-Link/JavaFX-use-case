@@ -21,4 +21,8 @@ public class MessageView implements FxmlView<MessageViewModel>, Initializable {
     public void onSuccessButtonClick(ActionEvent actionEvent) {
         MessageUtils.success("成功消息");
     }
+
+    public void onErrorButtonClick(ActionEvent actionEvent) {
+        MessageUtils.error("错误消息");
+    }
 }
