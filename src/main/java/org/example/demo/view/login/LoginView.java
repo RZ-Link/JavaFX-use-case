@@ -1,6 +1,7 @@
 package org.example.demo.view.login;
 
-import de.saxsys.mvvmfx.*;
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 

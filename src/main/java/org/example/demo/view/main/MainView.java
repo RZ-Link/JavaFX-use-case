@@ -2,12 +2,16 @@ package org.example.demo.view.main;
 
 import atlantafx.base.theme.Styles;
 import cn.hutool.core.util.StrUtil;
-import de.saxsys.mvvmfx.*;
+import de.saxsys.mvvmfx.FluentViewLoader;
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import org.example.demo.component.SideMenu;
+import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
@@ -59,23 +63,26 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         } else {
             tab = new Tab(tabTitle);
             switch (tabTitle) {
-                case "表格demo":
+                case "基础表格":
                     tab.setContent(FluentViewLoader.fxmlView(TableView.class).load().getView());
                     break;
-                case "可编辑表格demo":
+                case "可编辑表格":
                     tab.setContent(FluentViewLoader.fxmlView(EditableTableView.class).load().getView());
                     break;
-                case "表头分组表格demo":
+                case "表头分组表格":
                     tab.setContent(FluentViewLoader.fxmlView(GroupingHeadTableView.class).load().getView());
                     break;
-                case "居中表格demo":
+                case "居中表格":
                     tab.setContent(FluentViewLoader.fxmlView(CenterTableView.class).load().getView());
                     break;
-                case "分页组件demo":
+                case "分页组件":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
                     break;
-                case "图片读取demo":
+                case "图片读取":
                     tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
+                    break;
+                case "消息提示":
+                    tab.setContent(FluentViewLoader.fxmlView(MessageView.class).load().getView());
                     break;
                 case "弹窗demo":
                     tab.setContent(FluentViewLoader.fxmlView(DialogSampleView.class).load().getView());
