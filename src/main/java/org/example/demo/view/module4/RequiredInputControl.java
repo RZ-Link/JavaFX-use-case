@@ -22,7 +22,7 @@ import java.util.Arrays;
  * @date 2024/7/27 11:17
  */
 public class RequiredInputControl extends VBox {
-    private Control control = new TextField();
+    private Node control = new TextField();
     private Label tipsLabel;
 
     private StringProperty tips = new SimpleStringProperty();
@@ -58,11 +58,11 @@ public class RequiredInputControl extends VBox {
         tipsLabel.setText(tips);
     }
 
-    public Control getControl() {
+    public Node getControl() {
         return control;
     }
 
-    public void setControl(Control control) {
+    public void setControl(Node control) {
         this.control=control;
         resetControl();
     }
