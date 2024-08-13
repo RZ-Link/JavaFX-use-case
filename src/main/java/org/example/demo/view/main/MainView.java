@@ -60,22 +60,22 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         } else {
             tab = new Tab(tabTitle);
             switch (tabTitle) {
-                case "表格demo":
+                case "基础表格":
                     tab.setContent(FluentViewLoader.fxmlView(TableView.class).load().getView());
                     break;
-                case "可编辑表格demo":
+                case "可编辑表格":
                     tab.setContent(FluentViewLoader.fxmlView(EditableTableView.class).load().getView());
                     break;
-                case "表头分组表格demo":
+                case "表头分组表格":
                     tab.setContent(FluentViewLoader.fxmlView(GroupingHeadTableView.class).load().getView());
                     break;
-                case "居中表格demo":
+                case "居中表格":
                     tab.setContent(FluentViewLoader.fxmlView(CenterTableView.class).load().getView());
                     break;
-                case "分页组件demo":
+                case "分页组件":
                     tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
                     break;
-                case "图片读取demo":
+                case "图片读取":
                     tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
                     break;
                 case "消息提示":

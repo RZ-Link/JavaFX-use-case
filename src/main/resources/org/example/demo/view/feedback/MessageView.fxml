@@ -5,7 +5,8 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.demo.view.feedback.MessageView"
-      alignment="CENTER">
+      alignment="CENTER"
+      spacing="5">
     <Button text="成功" onAction="#onSuccessButtonClick"/>
     <Button text="错误" onAction="#onErrorButtonClick"/>
 </VBox>

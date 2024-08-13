@@ -7,8 +7,11 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import org.example.demo.view.main.MainView;
+import org.kordamp.ikonli.Ikon;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
+
+import java.util.HashMap;
 
 // 左侧菜单
 public class SideMenu extends StackPane {
@@ -16,26 +19,41 @@ public class SideMenu extends StackPane {
     private MainView mainView;
 
     public SideMenu() {
+
+        HashMap<TreeItem<String>, Ikon> treeItemIconMap = new HashMap<>();
+
         // 创建根节点
         TreeItem<String> rootItem = new TreeItem<>();
-        // 展开根节点
-        rootItem.setExpanded(true);
+
         // 创建子节点
-        TreeItem<String> child1 = new TreeItem<>("表格demo");
-        TreeItem<String> subChild11 = new TreeItem<>("表格demo");
-        TreeItem<String> subChild12 = new TreeItem<>("可编辑表格demo");
-        TreeItem<String> subChild13 = new TreeItem<>("表头分组表格demo");
-        TreeItem<String> subChild14 = new TreeItem<>("居中表格demo");
+        TreeItem<String> child1 = new TreeItem<>("表格");
+        treeItemIconMap.put(child1, Feather.COLUMNS);
+        TreeItem<String> subChild11 = new TreeItem<>("基础表格");
+        TreeItem<String> subChild12 = new TreeItem<>("可编辑表格");
+        TreeItem<String> subChild13 = new TreeItem<>("表头分组表格");
+        TreeItem<String> subChild14 = new TreeItem<>("居中表格");
         child1.getChildren().addAll(subChild11, subChild12, subChild13, subChild14);
-        TreeItem<String> child2 = new TreeItem<>("分页组件demo");
-        TreeItem<String> child3 = new TreeItem<>("资源读取demo");
-        TreeItem<String> subChild31 = new TreeItem<>("图片读取demo");
+        child1.setExpanded(true);
+
+        TreeItem<String> child2 = new TreeItem<>("分页组件");
+        treeItemIconMap.put(child2, Feather.FAST_FORWARD);
+
+        TreeItem<String> child3 = new TreeItem<>("资源读取");
+        treeItemIconMap.put(child3, Feather.AT_SIGN);
+        TreeItem<String> subChild31 = new TreeItem<>("图片读取");
         child3.getChildren().addAll(subChild31);
+        child3.setExpanded(true);
+
         TreeItem<String> child4 = new TreeItem<>("反馈组件");
+        treeItemIconMap.put(child4, Feather.MESSAGE_CIRCLE);
         TreeItem<String> subChild41 = new TreeItem<>("消息提示");
         child4.getChildren().addAll(subChild41);
+        child4.setExpanded(true);
+
         // 根节点添加子节点
         rootItem.getChildren().addAll(child1, child2, child3, child4);
+        rootItem.setExpanded(true);
+
         // 创建TreeView，设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
         // 隐藏根节点
@@ -58,7 +76,9 @@ public class SideMenu extends StackPane {
                             setText(null);
 
                             Label label = new Label(item);
-                            label.setGraphic(FontIcon.of(Feather.CHEVRON_DOWN)); // 设置图标
+                            if (treeItemIconMap.containsKey(this.getTreeItem())) {
+                                label.setGraphic(FontIcon.of(treeItemIconMap.get(this.getTreeItem()))); // 设置图标
+                            }
                             label.setGraphicTextGap(10);
                             setGraphic(label);
                         }
