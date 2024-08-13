@@ -1,6 +1,6 @@
 package org.example.demo;
 
-import atlantafx.base.theme.NordLight;
+import atlantafx.base.theme.PrimerLight;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Application;
@@ -20,7 +20,7 @@ public class DemoApplication extends Application {
         DemoApplication.stage = stage;
 
         // 设置AtlantaFX主题
-        Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
+        Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
         // 线程未捕获异常处理，对话框提示
         Thread.currentThread().setUncaughtExceptionHandler(new DefaultExceptionHandler());
         // 启动窗口
