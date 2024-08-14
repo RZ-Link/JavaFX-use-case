@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.demo.view.module4.ConfirmDialog"
+            fx:id="dialogPane"
+            prefWidth="400"
+            style="-fx-border-color: black;">
+    <padding>
+        <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+    </padding>
+    <top>
+        <VBox spacing="2">
+            <HBox>
+                <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                    <Label fx:id="titleLabel">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button fx:id="closeButton"
+                            style="-fx-background-color: transparent;">
+                        <graphic>
+                            <FontIcon iconLiteral="fth-x"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </HBox>
+            <HBox>
+                <Separator HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="messageLabel" wrapText="true">
+                <graphic>
+                    <FontIcon iconLiteral="fth-alert-circle"/>
+                </graphic>
+            </Label>
+        </HBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="5">
+            <Button fx:id="confirmButton" prefHeight="32.0" prefWidth="64.0" text="确定"/>
+            <Button fx:id="cancelButton" prefHeight="32.0" prefWidth="64.0" text="取消"/>
+        </HBox>
+    </bottom>
+</BorderPane>
