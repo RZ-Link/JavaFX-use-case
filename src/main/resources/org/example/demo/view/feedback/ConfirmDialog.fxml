@@ -7,7 +7,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.demo.view.module4.ConfirmDialog"
+            fx:controller="org.example.demo.view.feedback.ConfirmDialog"
             fx:id="dialogPane"
             prefWidth="400"
             style="-fx-border-color: black;">

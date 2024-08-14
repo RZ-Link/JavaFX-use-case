@@ -1,4 +1,4 @@
-package org.example.demo.view.module4;
+package org.example.demo.view.feedback;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,7 +71,7 @@ public class ConfirmDialog {
      */
     public static void create(String title, String message, Runnable confirmAction) {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(ConfirmDialog.class.getResource("/org/example/demo/view/module4/ConfirmDialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(ConfirmDialog.class.getResource("/org/example/demo/view/feedback/ConfirmDialog.fxml"));
         try {
             loader.load();
         } catch (IOException e) {

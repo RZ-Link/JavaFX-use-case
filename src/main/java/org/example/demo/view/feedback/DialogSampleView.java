@@ -1,4 +1,4 @@
-package org.example.demo.view.module4;
+package org.example.demo.view.feedback;
 
 import de.saxsys.mvvmfx.FxmlView;
 import javafx.event.ActionEvent;
@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 public class DialogSampleView implements FxmlView<DialogSampleViewModel>, Initializable {
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 

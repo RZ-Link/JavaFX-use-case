@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
-      fx:controller="org.example.demo.view.module4.DialogSampleView"
+      fx:controller="org.example.demo.view.feedback.DialogSampleView"
       alignment="CENTER"
       spacing="10">
     <Button onAction="#onSuccessButtonClick" text="Success"/>

@@ -18,8 +18,8 @@ import org.example.demo.view.module1.GroupingHeadTableView;
 import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.view.module3.ReadImageView;
-import org.example.demo.view.module4.DialogSampleView;
-import org.example.demo.view.module4.SimpleFormView;
+import org.example.demo.view.feedback.DialogSampleView;
+import org.example.demo.view.module4.FormValidateView;
 
 import java.net.URL;
 import java.util.Optional;
@@ -87,7 +87,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     tab.setContent(FluentViewLoader.fxmlView(DialogSampleView.class).load().getView());
                     break;
                 case "表单校验":
-                    tab.setContent(FluentViewLoader.fxmlView(SimpleFormView.class).load().getView());
+                    tab.setContent(FluentViewLoader.fxmlView(FormValidateView.class).load().getView());
                     break;
                 default:
                     return;

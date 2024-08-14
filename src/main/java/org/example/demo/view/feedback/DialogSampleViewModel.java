@@ -1,4 +1,4 @@
-package org.example.demo.view.module4;
+package org.example.demo.view.feedback;
 
 import de.saxsys.mvvmfx.ViewModel;
 
