@@ -11,6 +11,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import org.example.demo.component.SideMenu;
+import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
@@ -18,7 +19,6 @@ import org.example.demo.view.module1.GroupingHeadTableView;
 import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.view.module3.ReadImageView;
-import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.module4.FormValidateView;
 
 import java.net.URL;
