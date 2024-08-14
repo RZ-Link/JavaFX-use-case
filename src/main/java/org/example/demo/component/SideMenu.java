@@ -50,10 +50,15 @@ public class SideMenu extends StackPane {
         child4.getChildren().addAll(subChild41);
         child4.setExpanded(true);
 
+        TreeItem<String> child5 = new TreeItem<>("响应组件demo");
+        TreeItem<String> subChild51 = new TreeItem<>("弹窗demo");
+        TreeItem<String> subChild52 = new TreeItem<>("简单表单");
+        child5.getChildren().addAll(subChild51, subChild52);
         // 根节点添加子节点
-        rootItem.getChildren().addAll(child1, child2, child3, child4);
+        rootItem.getChildren().addAll(child1, child2, child3, child4, child5);
         rootItem.setExpanded(true);
 
+        rootItem.getChildren().addAll(child1, child2, child3, child4);
         // 创建TreeView，设置根节点
         TreeView<String> treeView = new TreeView<>(rootItem);
         // 隐藏根节点
