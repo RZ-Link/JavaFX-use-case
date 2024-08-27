@@ -36,7 +36,7 @@ public class ConfirmDialog {
     private double xOffset;
     private double yOffset;
 
-    private void initialize(String title, String message, Runnable confirmAction, Stage stage) {
+    private void initialize(String message, Runnable confirmAction, Stage stage) {
 
         // 拖拽
         dialogPane.setOnMousePressed(event -> {
@@ -47,8 +47,6 @@ public class ConfirmDialog {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
         });
-        // 设置标题
-        titleLabel.setText(title);
         // 设置内容
         messageLabel.setText(message);
 
@@ -57,9 +55,6 @@ public class ConfirmDialog {
             stage.close();
         });
         cancelButton.setOnAction(e -> {
-            stage.close();
-        });
-        closeButton.setOnAction(e -> {
             stage.close();
         });
     }
@@ -79,9 +74,10 @@ public class ConfirmDialog {
         }
         BorderPane root = loader.getRoot();
         ConfirmDialog controller = loader.getController();
-        controller.initialize(title, message, confirmAction, stage);
+        controller.initialize(message, confirmAction, stage);
+        // 设置标题
+        stage.setTitle(title);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
