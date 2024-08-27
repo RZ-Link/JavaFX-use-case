@@ -13,4 +13,5 @@
       spacing="5">
     <Button text="阿里妈妈刀隶体" onAction="#onDaoLiTiButtonClick"/>
     <Button text="阿里妈妈东方大楷" onAction="#onDongFangDaKaiButtonClick"/>
+    <Button text="默认" onAction="#onDefaultButtonClick"/>
 </VBox>
