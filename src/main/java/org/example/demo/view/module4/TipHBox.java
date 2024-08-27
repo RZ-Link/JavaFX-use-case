@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 public class TipHBox extends HBox {
     private final HBox controlBox;
@@ -13,6 +14,7 @@ public class TipHBox extends HBox {
         controlBox = new HBox();
         tipLabel = new Label();
         tipLabel.setVisible(false);
+        tipLabel.setTextFill(Color.RED);
 
         this.getChildren().add(controlBox);
         this.getChildren().add(tipLabel);

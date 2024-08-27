@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class TipVBox extends VBox {
 
@@ -15,6 +16,7 @@ public class TipVBox extends VBox {
         controlBox = new HBox();
         tipLabel = new Label();
         tipLabel.setVisible(false);
+        tipLabel.setTextFill(Color.RED);
 
         this.getChildren().add(controlBox);
         this.getChildren().add(tipLabel);
