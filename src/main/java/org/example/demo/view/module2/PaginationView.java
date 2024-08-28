@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import org.example.demo.component.FXPagination;
+import org.example.demo.component.NewFXPagination;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class PaginationView implements FxmlView<PaginationViewModel>, Initializa
     private VBox vbox;
     @FXML
     private FXPagination fxPagination;
-
+    @FXML
+    private NewFXPagination newFxPagination;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fxPagination.update(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
@@ -29,5 +31,12 @@ public class PaginationView implements FxmlView<PaginationViewModel>, Initializa
                     fxPagination.update(fxPagination.getTotalItemCount().get(), pageSize, currentPage);
                 });
         fxPagination.update(1000L, 100L, 1L);
+
+        newFxPagination.setMaxShowPageNum(6);
+        newFxPagination.update(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
+                (pageSize, currentPage) -> {
+                    newFxPagination.update(newFxPagination.getTotalItemCount().get(), pageSize, currentPage);
+                });
+        newFxPagination.update(1000L, 100L, 1L);
     }
 }
