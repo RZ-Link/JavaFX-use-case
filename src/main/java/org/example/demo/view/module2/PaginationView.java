@@ -22,21 +22,13 @@ public class PaginationView implements FxmlView<PaginationViewModel>, Initializa
     private VBox vbox;
     @FXML
     private FXPagination fxPagination;
-    @FXML
-    private NewFXPagination newFxPagination;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fxPagination.update(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
+        fxPagination.update(7L, new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
                 (pageSize, currentPage) -> {
                     fxPagination.update(fxPagination.getTotalItemCount().get(), pageSize, currentPage);
                 });
         fxPagination.update(1000L, 100L, 1L);
-
-        newFxPagination.setMaxShowPageNum(6);
-        newFxPagination.update(new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
-                (pageSize, currentPage) -> {
-                    newFxPagination.update(newFxPagination.getTotalItemCount().get(), pageSize, currentPage);
-                });
-        newFxPagination.update(1000L, 100L, 1L);
     }
 }

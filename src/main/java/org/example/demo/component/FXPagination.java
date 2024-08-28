@@ -1,5 +1,6 @@
 package org.example.demo.component;
 
+import cn.hutool.core.util.PageUtil;
 import cn.hutool.core.util.StrUtil;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.geometry.Pos;
@@ -26,13 +27,15 @@ public class FXPagination extends HBox {
     private SimpleLongProperty pageSize;
     // 当前页数
     private SimpleLongProperty currentPage;
+    // 最大页码按钮数，页码按钮的数量
+    private SimpleLongProperty pagerCount;
     // currentPage改变时触发
     private BiConsumer<Long, Long> currentChange;
 
     private Label totalItemCountLabel;
     private ComboBox<String> pageSizeComboBox;
     private Button prevButton;
-    private Button currentPageButton;
+    private HBox pageButtonBox;
     private Button nextButton;
     private Label gotoLabel;
     private TextField gotoTextField;
@@ -44,6 +47,7 @@ public class FXPagination extends HBox {
         this.totalItemCount = new SimpleLongProperty(0L);
         this.pageSize = new SimpleLongProperty(10L);
         this.currentPage = new SimpleLongProperty(1L);
+        this.pagerCount = new SimpleLongProperty(7L);
         this.currentChange = (pageSize, currentPage) -> {
             this.update(this.totalItemCount.get(), pageSize, currentPage);
         };
@@ -76,8 +80,21 @@ public class FXPagination extends HBox {
         });
         this.prevButton.setDisable(this.currentPage.get() <= 1);
 
-        this.currentPageButton = new Button(String.valueOf(this.currentPage.get()));
-        this.currentPageButton.setDisable(true);
+        this.pageButtonBox = new HBox();
+        this.pageButtonBox.setAlignment(Pos.CENTER);
+        this.pageButtonBox.setSpacing(5);
+        // 分页彩虹算法介绍https://doc.hutool.cn/pages/PageUtil/
+        int[] rainbow = PageUtil.rainbow(this.currentPage.intValue(), this.getPageCount().intValue(), this.pagerCount.intValue());
+        for (int page : rainbow) {
+            Button button = new Button(String.valueOf(page));
+            button.setOnAction(e -> {
+                this.currentChange.accept(this.pageSize.get(), (long) page);
+            });
+            if (page == this.currentPage.intValue()) {
+                button.setDisable(true);
+            }
+            this.pageButtonBox.getChildren().add(button);
+        }
 
         this.nextButton = new Button();
         this.nextButton.setGraphic(FontIcon.of(Feather.CHEVRON_RIGHT));
@@ -106,19 +123,23 @@ public class FXPagination extends HBox {
 
         this.totalPageCountLabel = new Label(StrUtil.format("Total page count {}", pageCount));
 
-        this.getChildren().addAll(this.totalItemCountLabel, this.pageSizeComboBox, this.prevButton, this.currentPageButton, this.nextButton, this.gotoLabel, this.gotoTextField, this.totalPageCountLabel);
+        this.getChildren().addAll(this.totalItemCountLabel, this.pageSizeComboBox, this.prevButton, this.pageButtonBox, this.nextButton, this.gotoLabel, this.gotoTextField, this.totalPageCountLabel);
 
         this.setAlignment(Pos.CENTER);
         this.setSpacing(5);
     }
 
     /**
-     * 更新pageSizes & currentChange
+     * 更新pagerCount & pageSizes & currentChange
      *
+     * @param pagerCount    最大页码按钮数，页码按钮的数量
      * @param pageSizes     每页显示个数选择器的选项设置
      * @param currentChange currentPage 改变时触发
      */
-    public void update(ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+    public void update(Long pagerCount, ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+        if (pagerCount != null) {
+            this.pagerCount.set(pagerCount);
+        }
         if (pageSizes != null && !pageSizes.isEmpty()) {
             this.pageSizeComboBox.getItems().clear();
             for (Long item : pageSizes) {
@@ -143,10 +164,24 @@ public class FXPagination extends HBox {
         this.totalItemCount.set(totalItemCount);
         this.pageSize.set(pageSize);
         this.currentPage.set(currentPage);
+
         // 更新UI
         this.totalItemCountLabel.setText(StrUtil.format("Total item count {}", this.totalItemCount.get()));
         this.prevButton.setDisable(this.currentPage.get() <= 1);
-        this.currentPageButton.setText(String.valueOf(this.currentPage.get()));
+
+        this.pageButtonBox.getChildren().clear();
+        int[] rainbow = PageUtil.rainbow(this.currentPage.intValue(), this.getPageCount().intValue(), this.pagerCount.intValue());
+        for (int page : rainbow) {
+            Button button = new Button(String.valueOf(page));
+            button.setOnAction(e -> {
+                this.currentChange.accept(this.pageSize.get(), (long) page);
+            });
+            if (page == this.currentPage.intValue()) {
+                button.setDisable(true);
+            }
+            this.pageButtonBox.getChildren().add(button);
+        }
+
         long pageCount = this.getPageCount();
         this.nextButton.setDisable(this.currentPage.get() >= pageCount);
         this.totalPageCountLabel.setText(StrUtil.format("Total page count {}", pageCount));
