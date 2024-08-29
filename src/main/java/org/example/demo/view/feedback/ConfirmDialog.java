@@ -16,12 +16,6 @@ import java.io.IOException;
 public class ConfirmDialog {
 
     @FXML
-    private BorderPane dialogPane;
-
-    @FXML
-    private Label titleLabel;
-
-    @FXML
     private Label messageLabel;
 
     @FXML
@@ -30,23 +24,7 @@ public class ConfirmDialog {
     @FXML
     private Button cancelButton;
 
-    @FXML
-    private Button closeButton;
-
-    private double xOffset;
-    private double yOffset;
-
     private void initialize(String message, Runnable confirmAction, Stage stage) {
-
-        // 拖拽
-        dialogPane.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
-        dialogPane.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
-        });
         // 设置内容
         messageLabel.setText(message);
 
