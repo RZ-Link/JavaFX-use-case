@@ -130,13 +130,13 @@ public class FXPagination extends HBox {
     }
 
     /**
-     * 更新pagerCount & pageSizes & currentChange
+     * 初始化pagerCount & pageSizes & currentChange
      *
      * @param pagerCount    最大页码按钮数，页码按钮的数量
      * @param pageSizes     每页显示个数选择器的选项设置
      * @param currentChange currentPage 改变时触发
      */
-    public void update(Long pagerCount, ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+    public void init(Long pagerCount, ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
         if (pagerCount != null) {
             this.pagerCount.set(pagerCount);
         }

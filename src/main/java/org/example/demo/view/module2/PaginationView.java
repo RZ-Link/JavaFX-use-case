@@ -25,7 +25,7 @@ public class PaginationView implements FxmlView<PaginationViewModel>, Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fxPagination.update(7L, new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
+        fxPagination.init(7L, new ArrayList<>(List.of(100L, 200L, 300L, 400L)),
                 (pageSize, currentPage) -> {
                     fxPagination.update(fxPagination.getTotalItemCount().get(), pageSize, currentPage);
                 });
