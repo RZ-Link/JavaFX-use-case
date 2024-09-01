@@ -55,7 +55,11 @@ public class FileIconView implements FxmlView<FileIconViewModel>, Initializable 
                                     } else {
                                         mimeType = mimeType.replaceAll("/", "-") + ".png";
                                     }
-                                    imageView.setImage(new Image("/org/example/demo/image/mimetypes/" + mimeType));
+                                    try {
+                                        imageView.setImage(new Image("/org/example/demo/image/mimetypes/" + mimeType));
+                                    } catch (Exception e) {
+                                        imageView.setImage(new Image("/org/example/demo/image/mimetypes/text-plain.png"));
+                                    }
                                 }
 
                                 HBox box = new HBox(imageView, new Label(item));
