@@ -10,45 +10,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.demo.view.main.MainView">
     <left>
-        <TreeView showRoot="false">
-            <TreeItem>
-                <children>
-                    <TreeItem value="模块1">
-                        <children>
-                            <TreeItem value="模块1-1"/>
-                            <TreeItem value="模块1-2"/>
-                            <TreeItem value="模块1-3"/>
-                            <TreeItem value="模块1-4"/>
-                            <TreeItem value="模块1-5"/>
-                            <TreeItem value="模块1-6"/>
-                            <TreeItem value="模块1-7"/>
-                            <TreeItem value="模块1-8"/>
-                            <TreeItem value="模块1-9"/>
-                            <TreeItem value="模块1-10"/>
-                        </children>
-                    </TreeItem>
-                    <TreeItem value="模块2"/>
-                    <TreeItem value="模块3"/>
-                    <TreeItem value="模块4"/>
-                    <TreeItem value="模块5"/>
-                    <TreeItem value="模块6"/>
-                    <TreeItem value="模块7"/>
-                    <TreeItem value="模块8"/>
-                    <TreeItem value="模块9"/>
-                    <TreeItem value="模块10"/>
-                </children>
-            </TreeItem>
-        </TreeView>
     </left>
     <center>
-        <TabPane>
-            <Tab text="模块1">
-                <Label text="模块1"/>
-            </Tab>
-            <Tab text="模块2">
-                <Label text="模块2"/>
-            </Tab>
-        </TabPane>
     </center>
     <top>
         <HBox alignment="CENTER_RIGHT" spacing="5" id="top-h-box">
