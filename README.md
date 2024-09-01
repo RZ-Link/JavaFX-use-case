@@ -12,3 +12,5 @@ https://openjfx.io/javadoc/22/javafx.graphics/javafx/scene/doc-files/cssref.html
 ikonli打包问题
 https://github.com/kordamp/ikonli/issues/11
 
+file icon
+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme

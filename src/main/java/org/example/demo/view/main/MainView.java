@@ -18,6 +18,7 @@ import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
 import org.example.demo.view.module1.TableView;
 import org.example.demo.view.module2.PaginationView;
+import org.example.demo.view.module3.FileIconView;
 import org.example.demo.view.module3.ReadFontView;
 import org.example.demo.view.module3.ReadImageView;
 import org.example.demo.view.module4.FormValidateView;
@@ -83,6 +84,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "字体读取":
                     tab.setContent(FluentViewLoader.fxmlView(ReadFontView.class).load().getView());
+                    break;
+                case "FileIcon读取":
+                    tab.setContent(FluentViewLoader.fxmlView(FileIconView.class).load().getView());
                     break;
                 case "消息提示":
                     tab.setContent(FluentViewLoader.fxmlView(MessageView.class).load().getView());
