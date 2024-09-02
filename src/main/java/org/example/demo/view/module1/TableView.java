@@ -47,7 +47,7 @@ public class TableView implements FxmlView<TableViewModel>, Initializable {
                 @Override
                 protected void updateItem(Long item, boolean empty) {
                     super.updateItem(item, empty);
-                    if (empty || item == null) {
+                    if (empty || item == null || getTableRow() == null || getTableRow().getItem() == null) {
                         setText(null);
                         setGraphic(null);
                     } else {
