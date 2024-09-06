@@ -85,7 +85,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "字体读取":
                     tab.setContent(FluentViewLoader.fxmlView(ReadFontView.class).load().getView());
                     break;
-                case "FileIcon读取":
+                case "文件图标读取":
                     tab.setContent(FluentViewLoader.fxmlView(FileIconView.class).load().getView());
                     break;
                 case "消息提示":

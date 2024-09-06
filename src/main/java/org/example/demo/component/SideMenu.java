@@ -42,7 +42,7 @@ public class SideMenu extends StackPane {
         treeItemIconMap.put(child3, Feather.AT_SIGN);
         TreeItem<String> subChild31 = new TreeItem<>("图片读取");
         TreeItem<String> subChild32 = new TreeItem<>("字体读取");
-        TreeItem<String> subChild33 = new TreeItem<>("FileIcon读取");
+        TreeItem<String> subChild33 = new TreeItem<>("文件图标读取");
         child3.getChildren().addAll(subChild31, subChild32, subChild33);
         child3.setExpanded(true);
 
