@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="org.example.demo.view.fixdefect.InputControlFixView"
+      alignment="TOP_CENTER"
+      spacing="10">
+    <padding>
+        <Insets top="100" right="10" bottom="10" left="10"/>
+    </padding>
+    <Label wrapText="true" prefWidth="400" text="通过自定义显示逻辑修复下拉框ComboBox重置后无法显示promptText的缺陷">
+        <padding>
+            <Insets bottom="10"/>
+        </padding>
+    </Label>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="修复前下拉框"/>
+        <ComboBox fx:id="beforeFixComboBox" promptText="请选择">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="10"/>
+                    <String fx:value="20"/>
+                    <String fx:value="30"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="修复后下拉框"/>
+        <ComboBox fx:id="afterFixComboBox" promptText="请选择">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="10"/>
+                    <String fx:value="20"/>
+                    <String fx:value="30"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <HBox spacing="5" alignment="CENTER">
+        <Button onAction="#onResetButtonClick" text="重置"/>
+    </HBox>
+</VBox>
