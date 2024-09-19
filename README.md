@@ -14,3 +14,7 @@ https://github.com/kordamp/ikonli/issues/11
 
 文件图标
 https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+
+JavaFX 21.0.4 TableView Bug
+https://github.com/openjdk/jfx/pull/1462
+

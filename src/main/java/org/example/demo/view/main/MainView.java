@@ -13,8 +13,8 @@ import javafx.scene.layout.BorderPane;
 import org.example.demo.component.SideMenu;
 import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.MessageView;
-import org.example.demo.view.fixdefect.InputControlFixView;
-import org.example.demo.view.fixdefect.TableDefectFixView;
+import org.example.demo.view.bug.InputControlBugView;
+import org.example.demo.view.bug.TableViewBugView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
@@ -99,11 +99,11 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "表单校验":
                     tab.setContent(FluentViewLoader.fxmlView(FormValidateView.class).load().getView());
                     break;
-                case "表格组件缺陷修复":
-                    tab.setContent(FluentViewLoader.fxmlView(TableDefectFixView.class).load().getView());
+                case "表格组件Bug":
+                    tab.setContent(FluentViewLoader.fxmlView(TableViewBugView.class).load().getView());
                     break;
-                case "输入组件缺陷修复":
-                    tab.setContent(FluentViewLoader.fxmlView(InputControlFixView.class).load().getView());
+                case "输入组件Bug":
+                    tab.setContent(FluentViewLoader.fxmlView(InputControlBugView.class).load().getView());
                     break;
                 default:
                     return;

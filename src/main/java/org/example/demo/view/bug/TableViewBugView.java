@@ -1,4 +1,4 @@
-package org.example.demo.view.fixdefect;
+package org.example.demo.view.bug;
 
 import de.saxsys.mvvmfx.FxmlView;
 import javafx.collections.FXCollections;
@@ -18,29 +18,23 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * TableDefectFixView
- *
- * @author ruiqi
- * @date 2024/9/14 13:47
- */
-public class TableDefectFixView implements FxmlView<TableDefectFixViewModel>, Initializable {
+public class TableViewBugView implements FxmlView<TableViewBugViewModel>, Initializable {
     public TableView<PersonEntity> beforeFixTableView;
-    public TableColumn<PersonEntity, String> nameColumn;
-    public TableColumn<PersonEntity, Long> ageColumn;
-    public TableColumn<PersonEntity, Long> operationColumn;
+    public TableColumn<PersonEntity, String> beforeFixNameColumn;
+    public TableColumn<PersonEntity, Long> beforeFixAgeColumn;
+    public TableColumn<PersonEntity, Long> beforeFixOperationColumn;
+
     public TableView<PersonEntity> afterFixTableView;
-    public TableColumn<PersonEntity, String> nameColumn1;
-    public TableColumn<PersonEntity, Long> ageColumn1;
-    public TableColumn<PersonEntity, Long> operationColumn1;
+    public TableColumn<PersonEntity, String> afterFixNameColumn;
+    public TableColumn<PersonEntity, Long> afterFixAgeColumn;
+    public TableColumn<PersonEntity, Long> afterFixOperationColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FXNativeComponentDefectFixUtil.fixTableViewScrollDefect(afterFixTableView);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
-        operationColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        operationColumn.setCellFactory(column -> {
+        beforeFixNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        beforeFixAgeColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        beforeFixOperationColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        beforeFixOperationColumn.setCellFactory(column -> {
             return new TableCell<>() {
                 @Override
                 protected void updateItem(Long item, boolean empty) {
@@ -61,10 +55,12 @@ public class TableDefectFixView implements FxmlView<TableDefectFixViewModel>, In
                 }
             };
         });
-        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ageColumn1.setCellValueFactory(new PropertyValueFactory<>("age"));
-        operationColumn1.setCellValueFactory(new PropertyValueFactory<>("id"));
-        operationColumn1.setCellFactory(column -> {
+
+        FXControlsBugFixUtils.setOnScrollToFixBug(afterFixTableView);
+        afterFixNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        afterFixAgeColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        afterFixOperationColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        afterFixOperationColumn.setCellFactory(column -> {
             return new TableCell<>() {
                 @Override
                 protected void updateItem(Long item, boolean empty) {
@@ -89,7 +85,6 @@ public class TableDefectFixView implements FxmlView<TableDefectFixViewModel>, In
         ObservableList<PersonEntity> data = FXCollections.observableArrayList(
                 new PersonEntity(1L, "曹操", 30L),
                 new PersonEntity(2L, "刘备", 30L)
-                // new PersonEntity(3L, "司马懿", 30L)
         );
         beforeFixTableView.setItems(data);
         afterFixTableView.setItems(data);

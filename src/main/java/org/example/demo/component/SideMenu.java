@@ -59,11 +59,11 @@ public class SideMenu extends StackPane {
         child5.getChildren().addAll(subChild51);
         child5.setExpanded(true);
 
-        TreeItem<String> child6 = new TreeItem<>("原生组件缺陷修复");
+        TreeItem<String> child6 = new TreeItem<>("JavaFX UI组件Bug");
         treeItemIconMap.put(child6, Feather.TOOL);
-        TreeItem<String> subChild61 = new TreeItem<>("表格组件缺陷修复");
-        TreeItem<String> subChild62 = new TreeItem<>("输入组件缺陷修复");
-        child6.getChildren().addAll(subChild61,subChild62);
+        TreeItem<String> subChild61 = new TreeItem<>("表格组件Bug");
+        TreeItem<String> subChild62 = new TreeItem<>("输入组件Bug");
+        child6.getChildren().addAll(subChild61, subChild62);
         child6.setExpanded(true);
 
         // 根节点添加子节点
