@@ -12,6 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import org.example.demo.component.SideMenu;
 import org.example.demo.view.feedback.DialogSampleView;
+import org.example.demo.view.feedback.LoadingView;
 import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.bug.InputControlBugView;
 import org.example.demo.view.bug.TableViewBugView;
@@ -95,6 +96,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "消息弹出框":
                     tab.setContent(FluentViewLoader.fxmlView(DialogSampleView.class).load().getView());
+                    break;
+                case "加载":
+                    tab.setContent(FluentViewLoader.fxmlView(LoadingView.class).load().getView());
                     break;
                 case "表单校验":
                     tab.setContent(FluentViewLoader.fxmlView(FormValidateView.class).load().getView());
