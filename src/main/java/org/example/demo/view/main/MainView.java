@@ -16,6 +16,7 @@ import org.example.demo.view.feedback.LoadingView;
 import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.bug.InputControlBugView;
 import org.example.demo.view.bug.TableViewBugView;
+import org.example.demo.view.global.ThemeView;
 import org.example.demo.view.module1.CenterTableView;
 import org.example.demo.view.module1.EditableTableView;
 import org.example.demo.view.module1.GroupingHeadTableView;
@@ -108,6 +109,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "输入组件Bug":
                     tab.setContent(FluentViewLoader.fxmlView(InputControlBugView.class).load().getView());
+                    break;
+                case "主题":
+                    tab.setContent(FluentViewLoader.fxmlView(ThemeView.class).load().getView());
                     break;
                 default:
                     return;
