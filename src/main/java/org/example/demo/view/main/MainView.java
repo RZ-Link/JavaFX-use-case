@@ -13,6 +13,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import org.example.demo.component.SideMenu;
+import org.example.demo.view.basic.IconView;
 import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.LoadingView;
 import org.example.demo.view.feedback.MessageView;
@@ -114,6 +115,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
                 case "主题":
                     parent = FluentViewLoader.fxmlView(ThemeView.class).load().getView();
+                    break;
+                case "图标":
+                    parent = FluentViewLoader.fxmlView(IconView.class).load().getView();
                     break;
                 default:
                     return;

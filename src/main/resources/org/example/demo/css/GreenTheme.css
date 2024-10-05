@@ -4670,6 +4670,7 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 /*------------------------------------------------------------------------*/
 .button {
     -fx-background-color: #009688;
+    -fx-text-fill: #ffffff;
 }
 
 #main-view-top-h-box {
