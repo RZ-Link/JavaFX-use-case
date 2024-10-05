@@ -1,4 +1,4 @@
-package org.example.demo.view.module1;
+package org.example.demo.view.table;
 
 import atlantafx.base.theme.Styles;
 import de.saxsys.mvvmfx.FxmlView;

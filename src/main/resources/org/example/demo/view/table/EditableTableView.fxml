@@ -5,8 +5,7 @@
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.module1.EditableTableView"
-      id="center-tab-pane"
+      fx:controller="org.example.demo.view.table.EditableTableView"
       alignment="CENTER"
       spacing="5">
     <HBox alignment="CENTER_LEFT" spacing="5">
@@ -27,7 +26,4 @@
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Button text="保存" onAction="#onSaveButtonClick"/>
     </HBox>
-    <stylesheets>
-        <URL value="@../../css/EditableTableView.css"/>
-    </stylesheets>
 </VBox>

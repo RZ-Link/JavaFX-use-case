@@ -14,10 +14,7 @@
     <center>
     </center>
     <top>
-        <HBox alignment="CENTER_RIGHT" spacing="5" id="top-h-box">
-            <padding>
-                <Insets top="5.0" right="5.0" bottom="5.0" left="5.0"/>
-            </padding>
+        <HBox alignment="CENTER_RIGHT" spacing="5" id="main-view-top-h-box">
             <MenuButton text="用户">
                 <graphic>
                     <FontIcon iconLiteral="fth-user"/>

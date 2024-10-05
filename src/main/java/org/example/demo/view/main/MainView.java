@@ -7,9 +7,11 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import org.example.demo.component.SideMenu;
 import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.LoadingView;
@@ -17,10 +19,10 @@ import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.bug.InputControlBugView;
 import org.example.demo.view.bug.TableViewBugView;
 import org.example.demo.view.global.ThemeView;
-import org.example.demo.view.module1.CenterTableView;
-import org.example.demo.view.module1.EditableTableView;
-import org.example.demo.view.module1.GroupingHeadTableView;
-import org.example.demo.view.module1.TableView;
+import org.example.demo.view.table.CenterTableView;
+import org.example.demo.view.table.EditableTableView;
+import org.example.demo.view.table.GroupingHeadTableView;
+import org.example.demo.view.table.BasicTableView;
 import org.example.demo.view.module2.PaginationView;
 import org.example.demo.view.module3.FileIconView;
 import org.example.demo.view.module3.ReadFontView;
@@ -66,56 +68,63 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         if (tabOptional.isPresent()) {
             tab = tabOptional.get();
         } else {
-            tab = new Tab(tabTitle);
+            Parent parent;
             switch (tabTitle) {
                 case "基础表格":
-                    tab.setContent(FluentViewLoader.fxmlView(TableView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(BasicTableView.class).load().getView();
                     break;
                 case "可编辑表格":
-                    tab.setContent(FluentViewLoader.fxmlView(EditableTableView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(EditableTableView.class).load().getView();
                     break;
                 case "表头分组表格":
-                    tab.setContent(FluentViewLoader.fxmlView(GroupingHeadTableView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(GroupingHeadTableView.class).load().getView();
                     break;
                 case "居中表格":
-                    tab.setContent(FluentViewLoader.fxmlView(CenterTableView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(CenterTableView.class).load().getView();
                     break;
                 case "分页组件":
-                    tab.setContent(FluentViewLoader.fxmlView(PaginationView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(PaginationView.class).load().getView();
                     break;
                 case "图片读取":
-                    tab.setContent(FluentViewLoader.fxmlView(ReadImageView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(ReadImageView.class).load().getView();
                     break;
                 case "字体读取":
-                    tab.setContent(FluentViewLoader.fxmlView(ReadFontView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(ReadFontView.class).load().getView();
                     break;
                 case "文件图标读取":
-                    tab.setContent(FluentViewLoader.fxmlView(FileIconView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(FileIconView.class).load().getView();
                     break;
                 case "消息提示":
-                    tab.setContent(FluentViewLoader.fxmlView(MessageView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(MessageView.class).load().getView();
                     break;
                 case "消息弹出框":
-                    tab.setContent(FluentViewLoader.fxmlView(DialogSampleView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(DialogSampleView.class).load().getView();
                     break;
                 case "加载":
-                    tab.setContent(FluentViewLoader.fxmlView(LoadingView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(LoadingView.class).load().getView();
                     break;
                 case "表单校验":
-                    tab.setContent(FluentViewLoader.fxmlView(FormValidateView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(FormValidateView.class).load().getView();
                     break;
                 case "表格组件Bug":
-                    tab.setContent(FluentViewLoader.fxmlView(TableViewBugView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(TableViewBugView.class).load().getView();
                     break;
                 case "输入组件Bug":
-                    tab.setContent(FluentViewLoader.fxmlView(InputControlBugView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(InputControlBugView.class).load().getView();
                     break;
                 case "主题":
-                    tab.setContent(FluentViewLoader.fxmlView(ThemeView.class).load().getView());
+                    parent = FluentViewLoader.fxmlView(ThemeView.class).load().getView();
                     break;
                 default:
                     return;
             }
+            StackPane stackPane = new StackPane();
+            stackPane.setId("main-view-center-tab-pane");
+            stackPane.getChildren().add(parent);
+
+            tab = new Tab(tabTitle);
+            tab.setContent(stackPane);
+
             tabPane.getTabs().add(tab);
         }
         tabPane.getSelectionModel().select(tab);

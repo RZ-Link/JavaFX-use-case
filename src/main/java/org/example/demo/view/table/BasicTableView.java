@@ -1,9 +1,7 @@
-package org.example.demo.view.module1;
+package org.example.demo.view.table;
 
-import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import de.saxsys.mvvmfx.ViewTuple;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,10 +17,10 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TableView implements FxmlView<TableViewModel>, Initializable {
+public class BasicTableView implements FxmlView<BasicTableViewModel>, Initializable {
 
     @InjectViewModel
-    private TableViewModel viewModel;
+    private BasicTableViewModel viewModel;
 
     @FXML
     private javafx.scene.control.TableView<PersonEntity> tableView;
@@ -55,7 +53,6 @@ public class TableView implements FxmlView<TableViewModel>, Initializable {
                         Button editButton = new Button("编辑", FontIcon.of(Feather.EDIT));
                         editButton.setOnAction(event -> {
                             System.out.println("编辑" + item + getTableRow().getItem().getName());
-                            showEditDialog();
                         });
 
                         Button deleteButton = new Button("删除", FontIcon.of(Feather.TRASH));
@@ -87,44 +84,5 @@ public class TableView implements FxmlView<TableViewModel>, Initializable {
         );
         tableView.setItems(data);
     }
-
-    // 弹出编辑对话框
-    private void showEditDialog() {
-
-        ViewTuple<PersonEditView, PersonEditViewModel> load = FluentViewLoader.fxmlView(PersonEditView.class).load();
-        Dialog<PersonEntity> dialog = new Dialog<>();
-        dialog.setTitle("编辑");
-        dialog.getDialogPane().setContent(load.getView());
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-        dialog.setResultConverter(buttonType -> {
-            if (buttonType == ButtonType.OK) {
-                var viewModel = load.getViewModel();
-                var personEntity = new PersonEntity();
-                try {
-                    personEntity.setId(Long.parseLong(viewModel.getId()));
-                } catch (Exception e) {
-                    personEntity.setId(null);
-                }
-                personEntity.setName(viewModel.getName());
-                try {
-                    personEntity.setAge(Long.parseLong(viewModel.getAge()));
-                } catch (Exception e) {
-                    personEntity.setAge(null);
-                }
-                return personEntity;
-            } else {
-                return null;
-            }
-        });
-
-        var result = dialog.showAndWait();
-        if (result.isPresent()) {
-            System.out.println(result.get().getId());
-            System.out.println(result.get().getName());
-            System.out.println(result.get().getAge());
-        }
-
-    }
-
 
 }

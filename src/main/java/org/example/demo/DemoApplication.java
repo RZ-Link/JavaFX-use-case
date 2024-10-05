@@ -20,7 +20,7 @@ public class DemoApplication extends Application {
         DemoApplication.stage = stage;
 
         // 设置AtlantaFX主题
-        Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+        Application.setUserAgentStylesheet("/org/example/demo/css/GreenTheme.css");
         // 线程未捕获异常处理，对话框提示
         Thread.currentThread().setUncaughtExceptionHandler(new DefaultExceptionHandler());
         // 启动窗口

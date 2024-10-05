@@ -4671,3 +4671,12 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 .button {
     -fx-background-color: #009688;
 }
+
+#main-view-top-h-box {
+    -fx-padding: 5px;
+    -fx-border-color: #dcdfe6;
+}
+#main-view-center-tab-pane {
+    -fx-padding: 10px;
+    -fx-background-color: #F0F2F5;
+}
