@@ -8,9 +8,6 @@
       xmlns="http://javafx.com/javafx"
       fx:controller="org.example.demo.view.bug.TableViewBugView"
       spacing="5">
-    <padding>
-        <Insets topRightBottomLeft="5"/>
-    </padding>
     <VBox>
         <Label text="表格滚动条可能出现的数据显示Bug"/>
         <Label text="Scene宽高设置640*480，滚动表格，点击数据复现"/>
