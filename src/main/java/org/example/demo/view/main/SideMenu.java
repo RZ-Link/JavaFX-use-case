@@ -44,9 +44,9 @@ public class SideMenu extends StackPane {
 
         TreeItem<String> child4 = new TreeItem<>("反馈组件");
         treeItemIconMap.put(child4, Feather.MESSAGE_CIRCLE);
-        TreeItem<String> subChild41 = new TreeItem<>("消息提示");
-        TreeItem<String> subChild42 = new TreeItem<>("消息弹出框");
-        TreeItem<String> subChild43 = new TreeItem<>("加载");
+        TreeItem<String> subChild41 = new TreeItem<>("加载");
+        TreeItem<String> subChild42 = new TreeItem<>("消息提示");
+        TreeItem<String> subChild43 = new TreeItem<>("消息弹出框");
         child4.getChildren().addAll(subChild41, subChild42, subChild43);
         child4.setExpanded(true);
 
