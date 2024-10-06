@@ -4,7 +4,6 @@
 <?import org.example.demo.view.pagination.FXPagination?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.demo.view.pagination.PaginationView"
-      fx:id="vbox"
       alignment="CENTER"
       spacing="5">
     <FXPagination fx:id="fxPagination"/>

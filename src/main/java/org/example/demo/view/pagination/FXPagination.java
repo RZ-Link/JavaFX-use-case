@@ -110,6 +110,7 @@ public class FXPagination extends HBox {
         this.gotoLabel = new Label("Go to");
 
         this.gotoTextField = new TextField();
+        this.gotoTextField.setPrefWidth(50);
         this.gotoTextField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 try {

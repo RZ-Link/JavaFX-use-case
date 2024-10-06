@@ -17,8 +17,6 @@ public class PaginationView implements FxmlView<PaginationViewModel>, Initializa
     private PaginationViewModel viewModel;
 
     @FXML
-    private VBox vbox;
-    @FXML
     private FXPagination fxPagination;
 
     @Override
