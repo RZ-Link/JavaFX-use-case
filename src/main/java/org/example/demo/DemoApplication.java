@@ -26,7 +26,7 @@ public class DemoApplication extends Application {
         // 启动窗口
         final ViewTuple<WindowView, WindowViewModel> viewTuple = FluentViewLoader.fxmlView(WindowView.class).load();
         final Parent root = viewTuple.getView();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root, 1280, 720);
         stage.setTitle("Demo Application");
         stage.setScene(scene);
         stage.show();
