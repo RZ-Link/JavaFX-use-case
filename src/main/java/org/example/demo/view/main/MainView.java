@@ -12,7 +12,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import org.example.demo.view.basic.IconView;
+import org.example.demo.view.basic.ReadIconView;
 import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.LoadingView;
 import org.example.demo.view.feedback.MessageView;
@@ -24,7 +24,6 @@ import org.example.demo.view.table.EditableTableView;
 import org.example.demo.view.table.GroupingHeadTableView;
 import org.example.demo.view.table.BasicTableView;
 import org.example.demo.view.pagination.PaginationView;
-import org.example.demo.view.module3.FileIconView;
 import org.example.demo.view.global.ReadFontView;
 import org.example.demo.view.image.ReadImageView;
 import org.example.demo.view.module4.FormValidateView;
@@ -89,10 +88,6 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "分页":
                     parent = FluentViewLoader.fxmlView(PaginationView.class).load().getView();
                     break;
-
-                case "文件图标读取":
-                    parent = FluentViewLoader.fxmlView(FileIconView.class).load().getView();
-                    break;
                 case "消息提示":
                     parent = FluentViewLoader.fxmlView(MessageView.class).load().getView();
                     break;
@@ -120,7 +115,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                     break;
 
                 case "图标":
-                    parent = FluentViewLoader.fxmlView(IconView.class).load().getView();
+                    parent = FluentViewLoader.fxmlView(ReadIconView.class).load().getView();
                     break;
                 default:
                     return;

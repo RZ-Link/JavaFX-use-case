@@ -1,4 +1,4 @@
-package org.example.demo.view.module3;
+package org.example.demo.view.basic;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
@@ -22,14 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+public class ReadIconView implements FxmlView<ReadIconViewModel>, Initializable {
 
-public class FileIconView implements FxmlView<FileIconViewModel>, Initializable {
     public TableView<FileEntity> tableView;
     public TableColumn<FileEntity, String> fileNameColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         fileNameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         fileNameColumn.setCellFactory(column -> {
                     return new TableCell<>() {
@@ -74,7 +73,7 @@ public class FileIconView implements FxmlView<FileIconViewModel>, Initializable 
 
         List<FileEntity> fileEntityList = new ArrayList<>();
         try {
-            List<Path> filePathList = Files.list(Paths.get(System.getProperty("user.home"))).toList();
+            List<Path> filePathList = Files.list(Paths.get(FileUtil.getUserHomePath())).toList();
             for (Path filePath : filePathList) {
                 File file = filePath.toFile();
                 FileEntity fileEntity = new FileEntity();

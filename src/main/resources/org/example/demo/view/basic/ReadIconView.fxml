@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import atlantafx.base.controls.Card?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo.view.basic.ReadIconView"
+      spacing="5">
+    <Card>
+        <body>
+            <Button text="图标">
+                <graphic>
+                    <ImageView fitWidth="14" fitHeight="14">
+                        <Image url="/org/example/demo/image/like.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </body>
+    </Card>
+    <Card>
+        <body>
+            <TableView fx:id="tableView">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <columns>
+                    <TableColumn fx:id="fileNameColumn" text="文件名称"/>
+                </columns>
+            </TableView>
+        </body>
+    </Card>
+</VBox>
