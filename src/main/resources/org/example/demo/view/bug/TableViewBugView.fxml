@@ -3,18 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
       fx:controller="org.example.demo.view.bug.TableViewBugView"
       spacing="5">
     <VBox>
-        <Label text="表格滚动条可能出现的数据显示Bug"/>
-        <Label text="Scene宽高设置640*480，滚动表格，点击数据复现"/>
+        <Label text="滚动表格，点击行，数据显示异常"/>
     </VBox>
-    <VBox>
+    <VBox spacing="5">
         <Label text="修复前"/>
-        <TableView fx:id="beforeFixTableView" prefHeight="150">
+        <TableView fx:id="beforeFixTableView" maxWidth="550" prefHeight="150">
             <columns>
                 <TableColumn fx:id="beforeFixNameColumn" prefWidth="200" text="姓名"/>
                 <TableColumn fx:id="beforeFixAgeColumn" prefWidth="200" text="年龄"/>
@@ -22,9 +20,9 @@
             </columns>
         </TableView>
     </VBox>
-    <VBox>
+    <VBox spacing="5">
         <Label text="修复后"/>
-        <TableView fx:id="afterFixTableView" prefHeight="150">
+        <TableView fx:id="afterFixTableView" maxWidth="550" prefHeight="150">
             <columns>
                 <TableColumn fx:id="afterFixNameColumn" prefWidth="200" text="姓名"/>
                 <TableColumn fx:id="afterFixAgeColumn" prefWidth="200" text="年龄"/>

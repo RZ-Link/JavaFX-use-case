@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 public class FXControlsBugFixUtils {
 
     /**
-     * 设置ButtonCell修复重置不显示PromptText的bug
+     * 设置ButtonCell，修复重置不显示PromptText的bug
      */
     public static <T> void setButtonCellToFixBug(ComboBox<T> comboBox) {
         comboBox.setButtonCell(new ListCell<T>() {
@@ -24,7 +24,7 @@ public class FXControlsBugFixUtils {
     }
 
     /**
-     * 设置OnScroll事件修复滚动条场景可能出现的数据显示bug
+     * 设置OnScroll事件，修复滚动条场景可能出现的数据显示bug
      */
     public static <T> void setOnScrollToFixBug(TableView<T> tableView) {
         tableView.setOnScroll(e -> {

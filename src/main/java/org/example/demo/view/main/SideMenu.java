@@ -22,42 +22,6 @@ public class SideMenu extends StackPane {
         TreeItem<String> rootItem = new TreeItem<>();
 
         // 创建子节点
-        TreeItem<String> table = new TreeItem<>("表格");
-        treeItemIconMap.put(table, Feather.COLUMNS);
-        TreeItem<String> basicTable = new TreeItem<>("基础表格");
-        TreeItem<String> editableTable = new TreeItem<>("可编辑表格");
-        TreeItem<String> groupingHeadTable = new TreeItem<>("表头分组表格");
-        TreeItem<String> centerTable = new TreeItem<>("居中表格");
-        table.getChildren().addAll(basicTable, editableTable, groupingHeadTable, centerTable);
-        table.setExpanded(true);
-
-        TreeItem<String> image = new TreeItem<>("图片");
-        treeItemIconMap.put(image, Feather.IMAGE);
-
-        TreeItem<String> fxPagination = new TreeItem<>("分页");
-        treeItemIconMap.put(fxPagination, Feather.FAST_FORWARD);
-
-        TreeItem<String> feedback = new TreeItem<>("反馈组件");
-        treeItemIconMap.put(feedback, Feather.MESSAGE_CIRCLE);
-        TreeItem<String> loading = new TreeItem<>("加载");
-        TreeItem<String> message = new TreeItem<>("消息提示");
-        TreeItem<String> messageBox = new TreeItem<>("消息弹出框");
-        feedback.getChildren().addAll(loading, message, messageBox);
-        feedback.setExpanded(true);
-
-        TreeItem<String> form = new TreeItem<>("表单");
-        treeItemIconMap.put(form, Feather.FILE_TEXT);
-        TreeItem<String> validate = new TreeItem<>("表单校验");
-        form.getChildren().addAll(validate);
-        form.setExpanded(true);
-
-        TreeItem<String> bug = new TreeItem<>("JavaFX UI组件Bug");
-        treeItemIconMap.put(bug, Feather.TOOL);
-        TreeItem<String> tableBug = new TreeItem<>("表格组件Bug");
-        TreeItem<String> comboBoxBug = new TreeItem<>("输入组件Bug");
-        bug.getChildren().addAll(tableBug, comboBoxBug);
-        bug.setExpanded(true);
-
         TreeItem<String> global = new TreeItem<>("全局配置");
         treeItemIconMap.put(global, Feather.APERTURE);
         TreeItem<String> theme = new TreeItem<>("主题");
@@ -71,8 +35,44 @@ public class SideMenu extends StackPane {
         basic.getChildren().addAll(icon);
         basic.setExpanded(true);
 
+        TreeItem<String> form = new TreeItem<>("表单");
+        treeItemIconMap.put(form, Feather.FILE_TEXT);
+        TreeItem<String> validate = new TreeItem<>("表单校验");
+        form.getChildren().addAll(validate);
+        form.setExpanded(true);
+
+        TreeItem<String> image = new TreeItem<>("图片");
+        treeItemIconMap.put(image, Feather.IMAGE);
+
+        TreeItem<String> fxPagination = new TreeItem<>("分页");
+        treeItemIconMap.put(fxPagination, Feather.FAST_FORWARD);
+
+        TreeItem<String> table = new TreeItem<>("表格");
+        treeItemIconMap.put(table, Feather.COLUMNS);
+        TreeItem<String> basicTable = new TreeItem<>("基础表格");
+        TreeItem<String> editableTable = new TreeItem<>("可编辑表格");
+        TreeItem<String> groupingHeadTable = new TreeItem<>("表头分组表格");
+        TreeItem<String> centerTable = new TreeItem<>("居中表格");
+        table.getChildren().addAll(basicTable, editableTable, groupingHeadTable, centerTable);
+        table.setExpanded(true);
+
+        TreeItem<String> feedback = new TreeItem<>("反馈组件");
+        treeItemIconMap.put(feedback, Feather.MESSAGE_CIRCLE);
+        TreeItem<String> loading = new TreeItem<>("加载");
+        TreeItem<String> message = new TreeItem<>("消息提示");
+        TreeItem<String> messageBox = new TreeItem<>("消息弹出框");
+        feedback.getChildren().addAll(loading, message, messageBox);
+        feedback.setExpanded(true);
+
+        TreeItem<String> bug = new TreeItem<>("JavaFX UI组件Bug");
+        treeItemIconMap.put(bug, Feather.TOOL);
+        TreeItem<String> tableBug = new TreeItem<>("表格组件Bug");
+        TreeItem<String> comboBoxBug = new TreeItem<>("输入组件Bug");
+        bug.getChildren().addAll(tableBug, comboBoxBug);
+        bug.setExpanded(true);
+
         // 根节点添加子节点
-        rootItem.getChildren().addAll(table, image, fxPagination, feedback, form, bug, global, basic);
+        rootItem.getChildren().addAll(global, basic, form, image, fxPagination, table, feedback, bug);
         rootItem.setExpanded(true);
 
         // 创建TreeView，设置根节点
