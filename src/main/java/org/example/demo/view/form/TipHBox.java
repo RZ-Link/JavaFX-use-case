@@ -1,4 +1,4 @@
-package org.example.demo.view.module4;
+package org.example.demo.view.form;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
