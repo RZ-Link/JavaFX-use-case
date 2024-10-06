@@ -1,11 +1,10 @@
-package org.example.demo.view.module2;
+package org.example.demo.view.pagination;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
-import org.example.demo.component.FXPagination;
 
 import java.net.URL;
 import java.util.ArrayList;

@@ -1,9 +1,8 @@
-package org.example.demo.component;
+package org.example.demo.view.main;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
-import org.example.demo.view.main.MainView;
 import org.kordamp.ikonli.Ikon;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -32,7 +31,7 @@ public class SideMenu extends StackPane {
         child1.getChildren().addAll(subChild11, subChild12, subChild13, subChild14);
         child1.setExpanded(true);
 
-        TreeItem<String> child2 = new TreeItem<>("分页组件");
+        TreeItem<String> child2 = new TreeItem<>("分页");
         treeItemIconMap.put(child2, Feather.FAST_FORWARD);
 
         TreeItem<String> child3 = new TreeItem<>("资源读取");

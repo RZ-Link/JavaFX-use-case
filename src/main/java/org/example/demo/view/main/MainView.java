@@ -12,7 +12,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import org.example.demo.component.SideMenu;
 import org.example.demo.view.basic.IconView;
 import org.example.demo.view.feedback.DialogSampleView;
 import org.example.demo.view.feedback.LoadingView;
@@ -24,7 +23,7 @@ import org.example.demo.view.table.CenterTableView;
 import org.example.demo.view.table.EditableTableView;
 import org.example.demo.view.table.GroupingHeadTableView;
 import org.example.demo.view.table.BasicTableView;
-import org.example.demo.view.module2.PaginationView;
+import org.example.demo.view.pagination.PaginationView;
 import org.example.demo.view.module3.FileIconView;
 import org.example.demo.view.module3.ReadFontView;
 import org.example.demo.view.module3.ReadImageView;
@@ -83,7 +82,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "居中表格":
                     parent = FluentViewLoader.fxmlView(CenterTableView.class).load().getView();
                     break;
-                case "分页组件":
+                case "分页":
                     parent = FluentViewLoader.fxmlView(PaginationView.class).load().getView();
                     break;
                 case "图片读取":

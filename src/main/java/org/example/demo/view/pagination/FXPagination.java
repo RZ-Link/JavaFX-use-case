@@ -1,4 +1,4 @@
-package org.example.demo.component;
+package org.example.demo.view.pagination;
 
 import cn.hutool.core.util.PageUtil;
 import cn.hutool.core.util.StrUtil;
