@@ -1,9 +1,6 @@
 package org.example.demo.component;
 
-import atlantafx.base.theme.Styles;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import org.example.demo.view.main.MainView;
@@ -113,17 +110,11 @@ public class SideMenu extends StackPane {
                     }
                 };
                 treeCell.getStyleClass().add("main-view-left-tree-cell");
-                // 如果当前模块存在子模块，点击展开/折叠菜单
-                treeCell.setOnMouseClicked(event -> {
-                    if (!treeCell.isEmpty()) {
-                        treeCell.getTreeItem().setExpanded(!treeCell.getTreeItem().isExpanded());
-                    }
-                });
                 return treeCell;
             }
         });
 
-        // 监听用户选择模块变化，推送事件（更新窗口右侧页面）
+        // 监听用户选择模块变化，更新窗口右侧页面
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && newValue.isLeaf()) {
                 if (mainView != null) {

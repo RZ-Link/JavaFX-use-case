@@ -4667,7 +4667,11 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
     -fx-effect: dropshadow(three-pass-box, -color-shadow-default, 6px, 0.3, 0, 2);
 }
 
-/*------------------------------------------------------------------------*/
+/*******************************************************************************
+ *                                                                             *
+ * button                                                                      *
+ *                                                                             *
+ *******************************************************************************/
 .button {
     -color-button-bg: #009688;
     -color-button-fg: #ffffff;
@@ -4685,7 +4689,11 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 .button:armed {
     -fx-opacity: 1;
 }
-
+/*******************************************************************************
+ *                                                                             *
+ * MainView                                                                    *
+ *                                                                             *
+ *******************************************************************************/
 #main-view-top-h-box {
     -fx-padding: 5px;
     -fx-border-color: #dcdfe6;
@@ -4693,7 +4701,6 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 #main-view-center-tab-pane {
     -fx-padding: 10px;
 }
-
 .main-view-left-tree-cell:hover .main-view-left-tree-cell-label {
     -fx-text-fill: #009688;
     -fx-opacity: 0.8;
@@ -4707,4 +4714,20 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 }
 .main-view-left-tree-cell:armed .ikonli-font-icon {
     -fx-icon-color: #009688;
+}
+/*******************************************************************************
+ *                                                                             *
+ * FXPagination                                                                *
+ *                                                                             *
+ *******************************************************************************/
+.button.FXPagination {
+    -color-button-bg: -color-bg-subtle;
+    -color-button-fg: -color-fg-default;
+    -color-button-border: -color-border-default;
+    -color-button-bg-hover: -color-base-1;
+    -color-button-fg-hover: -color-button-fg;
+    -color-button-border-hover: -color-button-border;
+    -color-button-bg-pressed: -color-bg-subtle;
+    -color-button-fg-pressed: -color-button-fg;
+    -color-button-border-pressed: transparent;
 }

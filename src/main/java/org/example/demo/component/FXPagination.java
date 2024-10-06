@@ -74,6 +74,7 @@ public class FXPagination extends HBox {
         });
 
         this.prevButton = new Button();
+        this.prevButton.getStyleClass().add("FXPagination");
         this.prevButton.setGraphic(FontIcon.of(Feather.CHEVRON_LEFT));
         this.prevButton.setOnAction(event -> {
             this.currentChange.accept(this.pageSize.get(), this.currentPage.get() - 1);
@@ -87,6 +88,7 @@ public class FXPagination extends HBox {
         int[] rainbow = PageUtil.rainbow(this.currentPage.intValue(), this.getPageCount().intValue(), this.pagerCount.intValue());
         for (int page : rainbow) {
             Button button = new Button(String.valueOf(page));
+            button.getStyleClass().add("FXPagination");
             button.setOnAction(e -> {
                 this.currentChange.accept(this.pageSize.get(), (long) page);
             });
@@ -97,6 +99,7 @@ public class FXPagination extends HBox {
         }
 
         this.nextButton = new Button();
+        this.nextButton.getStyleClass().add("FXPagination");
         this.nextButton.setGraphic(FontIcon.of(Feather.CHEVRON_RIGHT));
         this.nextButton.setOnAction(event -> {
             this.currentChange.accept(this.pageSize.get(), this.currentPage.get() + 1);
@@ -173,6 +176,7 @@ public class FXPagination extends HBox {
         int[] rainbow = PageUtil.rainbow(this.currentPage.intValue(), this.getPageCount().intValue(), this.pagerCount.intValue());
         for (int page : rainbow) {
             Button button = new Button(String.valueOf(page));
+            button.getStyleClass().add("FXPagination");
             button.setOnAction(e -> {
                 this.currentChange.accept(this.pageSize.get(), (long) page);
             });
