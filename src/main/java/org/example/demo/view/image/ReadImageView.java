@@ -1,4 +1,4 @@
-package org.example.demo.view.module3;
+package org.example.demo.view.image;
 
 import de.saxsys.mvvmfx.FxmlView;
 import javafx.fxml.FXML;

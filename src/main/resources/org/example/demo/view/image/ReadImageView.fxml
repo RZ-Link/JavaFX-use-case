@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.module3.ReadImageView">
+      fx:controller="org.example.demo.view.image.ReadImageView">
     <ScrollPane>
         <ImageView fx:id="imageView"/>
     </ScrollPane>

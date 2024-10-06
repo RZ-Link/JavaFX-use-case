@@ -26,7 +26,7 @@ import org.example.demo.view.table.BasicTableView;
 import org.example.demo.view.pagination.PaginationView;
 import org.example.demo.view.module3.FileIconView;
 import org.example.demo.view.global.ReadFontView;
-import org.example.demo.view.module3.ReadImageView;
+import org.example.demo.view.image.ReadImageView;
 import org.example.demo.view.module4.FormValidateView;
 
 import java.net.URL;
