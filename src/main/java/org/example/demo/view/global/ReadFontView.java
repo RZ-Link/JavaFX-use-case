@@ -1,4 +1,4 @@
-package org.example.demo.view.module3;
+package org.example.demo.view.global;
 
 import cn.hutool.core.util.StrUtil;
 import de.saxsys.mvvmfx.FxmlView;

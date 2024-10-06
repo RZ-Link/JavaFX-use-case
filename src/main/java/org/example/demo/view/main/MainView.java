@@ -25,7 +25,7 @@ import org.example.demo.view.table.GroupingHeadTableView;
 import org.example.demo.view.table.BasicTableView;
 import org.example.demo.view.pagination.PaginationView;
 import org.example.demo.view.module3.FileIconView;
-import org.example.demo.view.module3.ReadFontView;
+import org.example.demo.view.global.ReadFontView;
 import org.example.demo.view.module3.ReadImageView;
 import org.example.demo.view.module4.FormValidateView;
 
@@ -82,15 +82,14 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "居中表格":
                     parent = FluentViewLoader.fxmlView(CenterTableView.class).load().getView();
                     break;
+
+                case "图片":
+                    parent = FluentViewLoader.fxmlView(ReadImageView.class).load().getView();
+                    break;
                 case "分页":
                     parent = FluentViewLoader.fxmlView(PaginationView.class).load().getView();
                     break;
-                case "图片读取":
-                    parent = FluentViewLoader.fxmlView(ReadImageView.class).load().getView();
-                    break;
-                case "字体读取":
-                    parent = FluentViewLoader.fxmlView(ReadFontView.class).load().getView();
-                    break;
+
                 case "文件图标读取":
                     parent = FluentViewLoader.fxmlView(FileIconView.class).load().getView();
                     break;
@@ -112,9 +111,14 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
                 case "输入组件Bug":
                     parent = FluentViewLoader.fxmlView(InputControlBugView.class).load().getView();
                     break;
+
                 case "主题":
                     parent = FluentViewLoader.fxmlView(ThemeView.class).load().getView();
                     break;
+                case "字体":
+                    parent = FluentViewLoader.fxmlView(ReadFontView.class).load().getView();
+                    break;
+
                 case "图标":
                     parent = FluentViewLoader.fxmlView(IconView.class).load().getView();
                     break;

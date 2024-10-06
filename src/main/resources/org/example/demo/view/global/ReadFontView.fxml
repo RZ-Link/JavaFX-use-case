@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.module3.ReadFontView"
+      fx:controller="org.example.demo.view.global.ReadFontView"
       alignment="CENTER"
       spacing="5">
     <Button text="阿里妈妈刀隶体" onAction="#onDaoLiTiButtonClick"/>

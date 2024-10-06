@@ -22,24 +22,26 @@ public class SideMenu extends StackPane {
         TreeItem<String> rootItem = new TreeItem<>();
 
         // 创建子节点
-        TreeItem<String> child1 = new TreeItem<>("表格");
-        treeItemIconMap.put(child1, Feather.COLUMNS);
-        TreeItem<String> subChild11 = new TreeItem<>("基础表格");
-        TreeItem<String> subChild12 = new TreeItem<>("可编辑表格");
-        TreeItem<String> subChild13 = new TreeItem<>("表头分组表格");
-        TreeItem<String> subChild14 = new TreeItem<>("居中表格");
-        child1.getChildren().addAll(subChild11, subChild12, subChild13, subChild14);
-        child1.setExpanded(true);
+        TreeItem<String> table = new TreeItem<>("表格");
+        treeItemIconMap.put(table, Feather.COLUMNS);
+        TreeItem<String> basicTable = new TreeItem<>("基础表格");
+        TreeItem<String> editableTable = new TreeItem<>("可编辑表格");
+        TreeItem<String> groupingHeadTable = new TreeItem<>("表头分组表格");
+        TreeItem<String> centerTable = new TreeItem<>("居中表格");
+        table.getChildren().addAll(basicTable, editableTable, groupingHeadTable, centerTable);
+        table.setExpanded(true);
 
-        TreeItem<String> child2 = new TreeItem<>("分页");
-        treeItemIconMap.put(child2, Feather.FAST_FORWARD);
+        TreeItem<String> image = new TreeItem<>("图片");
+        treeItemIconMap.put(image, Feather.IMAGE);
+
+        TreeItem<String> fxPagination = new TreeItem<>("分页");
+        treeItemIconMap.put(fxPagination, Feather.FAST_FORWARD);
 
         TreeItem<String> child3 = new TreeItem<>("资源读取");
         treeItemIconMap.put(child3, Feather.AT_SIGN);
-        TreeItem<String> subChild31 = new TreeItem<>("图片读取");
-        TreeItem<String> subChild32 = new TreeItem<>("字体读取");
-        TreeItem<String> subChild33 = new TreeItem<>("文件图标读取");
-        child3.getChildren().addAll(subChild31, subChild32, subChild33);
+        TreeItem<String> subChild31 = new TreeItem<>("字体读取");
+        TreeItem<String> subChild32 = new TreeItem<>("文件图标读取");
+        child3.getChildren().addAll(subChild31, subChild32);
         child3.setExpanded(true);
 
         TreeItem<String> child4 = new TreeItem<>("反馈组件");
@@ -63,11 +65,12 @@ public class SideMenu extends StackPane {
         child6.getChildren().addAll(subChild61, subChild62);
         child6.setExpanded(true);
 
-        TreeItem<String> child7 = new TreeItem<>("全局配置");
-        treeItemIconMap.put(child7, Feather.APERTURE);
-        TreeItem<String> subChild71 = new TreeItem<>("主题");
-        child7.getChildren().addAll(subChild71);
-        child7.setExpanded(true);
+        TreeItem<String> global = new TreeItem<>("全局配置");
+        treeItemIconMap.put(global, Feather.APERTURE);
+        TreeItem<String> theme = new TreeItem<>("主题");
+        TreeItem<String> font = new TreeItem<>("字体");
+        global.getChildren().addAll(theme, font);
+        global.setExpanded(true);
 
         TreeItem<String> child8 = new TreeItem<>("基础组件");
         treeItemIconMap.put(child8, Feather.AWARD);
@@ -76,7 +79,7 @@ public class SideMenu extends StackPane {
         child8.setExpanded(true);
 
         // 根节点添加子节点
-        rootItem.getChildren().addAll(child1, child2, child3, child4, child5, child6, child7, child8);
+        rootItem.getChildren().addAll(table, image, fxPagination, child3, child4, child5, child6, global, child8);
         rootItem.setExpanded(true);
 
         // 创建TreeView，设置根节点
