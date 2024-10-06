@@ -1,9 +1,9 @@
 package org.example.demo.component;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeCell;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import atlantafx.base.theme.Styles;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import org.example.demo.view.main.MainView;
@@ -102,9 +102,8 @@ public class SideMenu extends StackPane {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(null);
-
                             Label label = new Label(item);
+                            label.getStyleClass().add("main-view-left-tree-cell-label");
                             if (treeItemIconMap.containsKey(this.getTreeItem())) {
                                 label.setGraphic(FontIcon.of(treeItemIconMap.get(this.getTreeItem()))); // 设置图标
                             }
@@ -113,6 +112,7 @@ public class SideMenu extends StackPane {
                         }
                     }
                 };
+                treeCell.getStyleClass().add("main-view-left-tree-cell");
                 // 如果当前模块存在子模块，点击展开/折叠菜单
                 treeCell.setOnMouseClicked(event -> {
                     if (!treeCell.isEmpty()) {

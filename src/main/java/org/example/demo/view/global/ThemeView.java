@@ -24,7 +24,7 @@ public class ThemeView implements FxmlView<ThemeViewModel>, Initializable {
         Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
     }
 
-    public void onTestThemeButtonClick(ActionEvent actionEvent) {
+    public void onGreenThemeButtonClick(ActionEvent actionEvent) {
         Application.setUserAgentStylesheet("/org/example/demo/css/GreenTheme.css");
     }
 }

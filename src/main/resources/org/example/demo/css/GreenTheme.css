@@ -4669,8 +4669,21 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 
 /*------------------------------------------------------------------------*/
 .button {
-    -fx-background-color: #009688;
-    -fx-text-fill: #ffffff;
+    -color-button-bg: #009688;
+    -color-button-fg: #ffffff;
+    -color-button-border: transparent;
+    -color-button-bg-hover: #009688;
+    -color-button-fg-hover: #ffffff;
+    -color-button-border-hover: transparent;
+    -color-button-bg-pressed: #009688;
+    -color-button-fg-pressed: #ffffff;
+    -color-button-border-pressed: transparent;
+}
+.button:hover {
+    -fx-opacity: 0.8;
+}
+.button:armed {
+    -fx-opacity: 1;
 }
 
 #main-view-top-h-box {
@@ -4679,5 +4692,19 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
 }
 #main-view-center-tab-pane {
     -fx-padding: 10px;
-    -fx-background-color: #F0F2F5;
+}
+
+.main-view-left-tree-cell:hover .main-view-left-tree-cell-label {
+    -fx-text-fill: #009688;
+    -fx-opacity: 0.8;
+}
+.main-view-left-tree-cell:armed .main-view-left-tree-cell-label {
+    -fx-text-fill: #009688;
+    -fx-opacity: 1;
+}
+.main-view-left-tree-cell:hover .ikonli-font-icon {
+    -fx-icon-color: #009688;
+}
+.main-view-left-tree-cell:armed .ikonli-font-icon {
+    -fx-icon-color: #009688;
 }

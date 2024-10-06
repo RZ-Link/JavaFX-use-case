@@ -15,8 +15,8 @@
         <body>
             <VBox alignment="CENTER" spacing="10">
                 <Button text="PrimerLight" onAction="#onPrimerLightButtonClick"/>
-                <Button text="PrimerLight" onAction="#onNordLightButtonClick"/>
-                <Button text="PrimerLight" onAction="#onTestThemeButtonClick"/>
+                <Button text="NordLight" onAction="#onNordLightButtonClick"/>
+                <Button text="GreenTheme" onAction="#onGreenThemeButtonClick"/>
             </VBox>
         </body>
     </Card>
