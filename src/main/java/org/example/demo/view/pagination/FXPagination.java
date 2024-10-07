@@ -16,7 +16,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 @Data
 public class FXPagination extends HBox {
@@ -30,7 +30,7 @@ public class FXPagination extends HBox {
     // 最大页码按钮数，页码按钮的数量
     private SimpleLongProperty pagerCount;
     // currentPage改变时触发
-    private BiConsumer<Long, Long> currentChange;
+    private Consumer<Long> currentChange;
 
     private Label totalItemCountLabel;
     private ComboBox<String> pageSizeComboBox;
@@ -48,8 +48,8 @@ public class FXPagination extends HBox {
         this.pageSize = new SimpleLongProperty(10L);
         this.currentPage = new SimpleLongProperty(1L);
         this.pagerCount = new SimpleLongProperty(7L);
-        this.currentChange = (pageSize, currentPage) -> {
-            this.update(this.totalItemCount.get(), pageSize, currentPage);
+        this.currentChange = (currentPage) -> {
+            this.update(this.totalItemCount.get(), this.pageSize.get(), currentPage);
         };
 
         this.totalItemCountLabel = new Label(StrUtil.format("Total item count {}", this.totalItemCount.get()));
@@ -77,7 +77,7 @@ public class FXPagination extends HBox {
         this.prevButton.getStyleClass().add("FXPagination");
         this.prevButton.setGraphic(FontIcon.of(Feather.CHEVRON_LEFT));
         this.prevButton.setOnAction(event -> {
-            this.currentChange.accept(this.pageSize.get(), this.currentPage.get() - 1);
+            this.currentChange.accept(this.currentPage.get() - 1);
         });
         this.prevButton.setDisable(this.currentPage.get() <= 1);
 
@@ -90,7 +90,7 @@ public class FXPagination extends HBox {
             Button button = new Button(String.valueOf(page));
             button.getStyleClass().add("FXPagination");
             button.setOnAction(e -> {
-                this.currentChange.accept(this.pageSize.get(), (long) page);
+                this.currentChange.accept((long) page);
             });
             if (page == this.currentPage.intValue()) {
                 button.setDisable(true);
@@ -102,7 +102,7 @@ public class FXPagination extends HBox {
         this.nextButton.getStyleClass().add("FXPagination");
         this.nextButton.setGraphic(FontIcon.of(Feather.CHEVRON_RIGHT));
         this.nextButton.setOnAction(event -> {
-            this.currentChange.accept(this.pageSize.get(), this.currentPage.get() + 1);
+            this.currentChange.accept(this.currentPage.get() + 1);
         });
         long pageCount = this.getPageCount();
         this.nextButton.setDisable(this.currentPage.get() >= pageCount);
@@ -117,7 +117,7 @@ public class FXPagination extends HBox {
                     String text = this.gotoTextField.getText();
                     long gotoPage = Long.parseLong(text);
                     if (gotoPage >= 1 && gotoPage <= this.getPageCount()) {
-                        this.currentChange.accept(this.pageSize.get(), gotoPage);
+                        this.currentChange.accept(gotoPage);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -138,9 +138,9 @@ public class FXPagination extends HBox {
      *
      * @param pagerCount    最大页码按钮数，页码按钮的数量
      * @param pageSizes     每页显示个数选择器的选项设置
-     * @param currentChange currentPage 改变时触发
+     * @param currentChange 改变当前页时触发
      */
-    public void init(Long pagerCount, ArrayList<Long> pageSizes, BiConsumer<Long, Long> currentChange) {
+    public void init(Long pagerCount, ArrayList<Long> pageSizes, Consumer<Long> currentChange) {
         if (pagerCount != null) {
             this.pagerCount.set(pagerCount);
         }
@@ -179,7 +179,7 @@ public class FXPagination extends HBox {
             Button button = new Button(String.valueOf(page));
             button.getStyleClass().add("FXPagination");
             button.setOnAction(e -> {
-                this.currentChange.accept(this.pageSize.get(), (long) page);
+                this.currentChange.accept((long) page);
             });
             if (page == this.currentPage.intValue()) {
                 button.setDisable(true);
