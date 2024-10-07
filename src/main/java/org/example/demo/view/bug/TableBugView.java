@@ -44,12 +44,8 @@ public class TableBugView implements FxmlView<TableBugViewModel>, Initializable 
                         setGraphic(null);
                     } else {
                         Button deleteButton = new Button("删除", FontIcon.of(Feather.TRASH));
-                        deleteButton.setOnAction(event -> {
-                            System.out.println("删除" + item + getTableRow().getItem().getName());
-                        });
                         HBox box = new HBox(deleteButton);
-                        box.setAlignment(Pos.CENTER);
-                        box.setSpacing(5.0);
+                        box.setAlignment(Pos.CENTER_LEFT);
                         setGraphic(box);
                     }
                 }
@@ -70,12 +66,8 @@ public class TableBugView implements FxmlView<TableBugViewModel>, Initializable 
                         setGraphic(null);
                     } else {
                         Button deleteButton = new Button("删除", FontIcon.of(Feather.TRASH));
-                        deleteButton.setOnAction(event -> {
-                            System.out.println("删除" + item + getTableRow().getItem().getName());
-                        });
                         HBox box = new HBox(deleteButton);
-                        box.setAlignment(Pos.CENTER);
-                        box.setSpacing(5.0);
+                        box.setAlignment(Pos.CENTER_LEFT);
                         setGraphic(box);
                     }
                 }
