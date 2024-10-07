@@ -4694,11 +4694,11 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
  * MainView                                                                    *
  *                                                                             *
  *******************************************************************************/
-#main-view-top-h-box {
+.main-view-top-h-box {
     -fx-padding: 5px;
     -fx-border-color: #dcdfe6;
 }
-#main-view-center-tab-pane {
+.main-view-center-tab-pane {
     -fx-padding: 10px;
 }
 .main-view-left-tree-cell:hover .main-view-left-tree-cell-label {

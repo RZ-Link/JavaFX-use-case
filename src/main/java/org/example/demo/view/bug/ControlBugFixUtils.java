@@ -4,7 +4,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TableView;
 
-public class FXControlsBugFixUtils {
+public class ControlBugFixUtils {
 
     /**
      * 设置ButtonCell，修复重置不显示PromptText的bug

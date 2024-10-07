@@ -18,7 +18,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TableViewBugView implements FxmlView<TableViewBugViewModel>, Initializable {
+public class TableBugView implements FxmlView<TableBugViewModel>, Initializable {
     public TableView<PersonEntity> beforeFixTableView;
     public TableColumn<PersonEntity, String> beforeFixNameColumn;
     public TableColumn<PersonEntity, Long> beforeFixAgeColumn;
@@ -56,7 +56,7 @@ public class TableViewBugView implements FxmlView<TableViewBugViewModel>, Initia
             };
         });
 
-        FXControlsBugFixUtils.setOnScrollToFixBug(afterFixTableView);
+        ControlBugFixUtils.setOnScrollToFixBug(afterFixTableView);
         afterFixNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         afterFixAgeColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
         afterFixOperationColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

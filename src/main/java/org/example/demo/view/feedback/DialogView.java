@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DialogSampleView implements FxmlView<DialogSampleViewModel>, Initializable {
+public class DialogView implements FxmlView<DialogViewModel>, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -5,7 +5,7 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
-      fx:controller="org.example.demo.view.bug.TableViewBugView"
+      fx:controller="org.example.demo.view.bug.TableBugView"
       spacing="5">
     <VBox>
         <Label text="滚动表格，点击行，数据显示异常"/>

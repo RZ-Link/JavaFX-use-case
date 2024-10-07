@@ -7,7 +7,7 @@
 <?import javafx.collections.FXCollections?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
-      fx:controller="org.example.demo.view.bug.InputControlBugView"
+      fx:controller="org.example.demo.view.bug.ComboBoxBugView"
       alignment="CENTER"
       spacing="10">
     <Label text="ComboBox清空，无法显示文字提示"/>

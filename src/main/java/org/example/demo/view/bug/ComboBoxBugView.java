@@ -8,7 +8,7 @@ import javafx.scene.control.ComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InputControlBugView implements FxmlView<InputControlBugViewModel>, Initializable {
+public class ComboBoxBugView implements FxmlView<ComboBoxBugViewModel>, Initializable {
 
 
     public ComboBox<String> beforeFixComboBox;
@@ -16,7 +16,7 @@ public class InputControlBugView implements FxmlView<InputControlBugViewModel>, 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FXControlsBugFixUtils.setButtonCellToFixBug(afterFixComboBox);
+        ControlBugFixUtils.setButtonCellToFixBug(afterFixComboBox);
     }
 
     public void onResetButtonClick(ActionEvent actionEvent) {
