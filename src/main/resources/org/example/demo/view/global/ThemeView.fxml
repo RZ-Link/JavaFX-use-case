@@ -3,17 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import atlantafx.base.controls.Card?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.global.ThemeView">
-    <Card>
-        <body>
-            <VBox alignment="CENTER" spacing="10">
-                <Button text="PrimerLight" onAction="#onPrimerLightButtonClick"/>
-                <Button text="NordLight" onAction="#onNordLightButtonClick"/>
-                <Button text="GreenTheme" onAction="#onGreenThemeButtonClick"/>
-            </VBox>
-        </body>
-    </Card>
+      fx:controller="org.example.demo.view.global.ThemeView"
+      alignment="CENTER"
+      spacing="5">
+    <Button text="PrimerLight" onAction="#onPrimerLightButtonClick"/>
+    <Button text="NordLight" onAction="#onNordLightButtonClick"/>
+    <Button text="GreenTheme" onAction="#onGreenThemeButtonClick"/>
 </VBox>
