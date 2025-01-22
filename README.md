@@ -15,6 +15,7 @@ https://github.com/kordamp/ikonli/issues/11
 文件图标
 https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
-JavaFX 21.0.4 TableView Bug
-https://github.com/openjdk/jfx/pull/1462
-
+## jpackage
+```shell
+D:\JDK\OpenJDK17U-jdk_x64_windows_hotspot_17.0.12_7\jdk-17.0.12+7\bin\jpackage.exe --type app-image -i D:\IdeaProjects\JavaFX-use-case\target -n JavaFX-use-case --main-class org.example.demo.Starter --main-jar demo-1.0-SNAPSHOT.jar
+```
