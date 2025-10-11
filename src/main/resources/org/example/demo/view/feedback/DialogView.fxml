@@ -9,4 +9,5 @@
       spacing="10">
     <Button onAction="#onConfirmButtonClick" text="确认消息"/>
     <Button onAction="#onPromptButtonClick" text="提交内容"/>
+    <Button onAction="#onTreeViewButtonClick" text="TreeView"/>
 </VBox>

@@ -1,5 +1,6 @@
 package org.example.demo.view.feedback;
 
+import cn.hutool.json.JSONUtil;
 import de.saxsys.mvvmfx.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -23,6 +24,12 @@ public class DialogView implements FxmlView<DialogViewModel>, Initializable {
     public void onPromptButtonClick(ActionEvent actionEvent) {
         PromptDialog.create("标题", "正文内容", (input) -> {
             System.out.println(input);
+        });
+    }
+
+    public void onTreeViewButtonClick(ActionEvent actionEvent) {
+        TreeViewDialog.create("标题", (directoryVO) -> {
+            System.out.println(JSONUtil.toJsonStr(directoryVO));
         });
     }
 }
