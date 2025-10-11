@@ -16,10 +16,7 @@ import org.example.demo.view.feedback.MessageView;
 import org.example.demo.view.bug.ComboBoxBugView;
 import org.example.demo.view.bug.TableBugView;
 import org.example.demo.view.global.ThemeView;
-import org.example.demo.view.table.CenterTableView;
-import org.example.demo.view.table.EditableTableView;
-import org.example.demo.view.table.GroupingHeadTableView;
-import org.example.demo.view.table.BasicTableView;
+import org.example.demo.view.table.*;
 import org.example.demo.view.pagination.PaginationView;
 import org.example.demo.view.global.ReadFontView;
 import org.example.demo.view.image.ReadImageView;
@@ -92,7 +89,9 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         treeItemClassMap.put(groupingHeadTable, GroupingHeadTableView.class);
         TreeItem<String> centerTable = new TreeItem<>("居中表格");
         treeItemClassMap.put(centerTable, CenterTableView.class);
-        table.getChildren().addAll(basicTable, editableTable, groupingHeadTable, centerTable);
+        TreeItem<String> selectableTable = new TreeItem<>("多选表格");
+        treeItemClassMap.put(selectableTable, SelectableTableView.class);
+        table.getChildren().addAll(basicTable, editableTable, groupingHeadTable, centerTable, selectableTable);
         table.setExpanded(true);
 
         TreeItem<String> feedback = new TreeItem<>("反馈组件");
