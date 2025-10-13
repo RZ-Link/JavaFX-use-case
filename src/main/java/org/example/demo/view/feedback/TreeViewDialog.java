@@ -88,7 +88,7 @@ public class TreeViewDialog {
      */
     public static void create(String title, Consumer<DirectoryVO> confirmAction) {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(ConfirmDialog.class.getResource("/org/example/demo/view/feedback/TreeViewDialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(TreeViewDialog.class.getResource("/org/example/demo/view/feedback/TreeViewDialog.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
