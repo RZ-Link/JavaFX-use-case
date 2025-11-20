@@ -34,8 +34,7 @@ public class DemoApplication extends Application {
         stage.show();
 
         // 启动调试工具
-        var preferences = new Preferences(getHostServices());
-        GUI.openToolStage(stage, preferences, "AtlantaFX");
+        GUI.openToolStage(stage, getHostServices());
     }
 
     public static void main(String[] args) {
