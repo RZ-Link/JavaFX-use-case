@@ -12,7 +12,7 @@
         <StackPane fx:id="menu"/>
     </left>
     <center>
-        <TabPane fx:id="tabPane" tabClosingPolicy="ALL_TABS" styleClass="classic"/>
+        <TabPane fx:id="tabPane" tabClosingPolicy="ALL_TABS" styleClass="floating"/>
     </center>
     <top>
         <HBox alignment="CENTER_RIGHT" spacing="5" styleClass="main-view-top-h-box">
