@@ -5,14 +5,18 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.view.login.LoginView"
-      alignment="CENTER"
-      spacing="5">
+<?import javafx.scene.layout.StackPane?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.demo.view.login.LoginView"
+           style="-fx-background-image: url(org/example/demo/image/bg.png);">
     <padding>
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
-    <TextField promptText="用户名"/>
-    <PasswordField promptText="密码"/>
-    <Button text="登录" onAction="#onLoginButtonClick"/>
-</VBox>
+    <VBox alignment="CENTER" spacing="10"
+          minWidth="400" maxWidth="400"
+          minHeight="400" maxHeight="400">
+        <TextField promptText="用户名" minWidth="400" maxWidth="400"/>
+        <PasswordField promptText="密码" minWidth="400" maxWidth="400"/>
+        <Button text="登录" onAction="#onLoginButtonClick" minWidth="400" maxWidth="400"/>
+    </VBox>
+</StackPane>
