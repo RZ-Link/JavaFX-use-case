@@ -52,21 +52,29 @@ public class WindowView implements FxmlView<WindowViewModel>, Initializable {
     }
 
     public void addLoading() {
-        StackPane stackPane = new StackPane();
-        stackPane.setBackground(Background.fill(Color.GRAY));
-        stackPane.setOpacity(0.8);
-        ImageView imageView = new ImageView("/org/example/demo/image/loading.png");
-        imageView.setFitWidth(24);
-        imageView.setFitHeight(24);
-        stackPane.getChildren().add(imageView);
+        synchronized (WindowView.class) {
+            if (this.loading == null) {
+                StackPane stackPane = new StackPane();
+                stackPane.setBackground(Background.fill(Color.GRAY));
+                stackPane.setOpacity(0.8);
+                ImageView imageView = new ImageView("/org/example/demo/image/loading.png");
+                imageView.setFitWidth(24);
+                imageView.setFitHeight(24);
+                stackPane.getChildren().add(imageView);
 
-        rootPane.getChildren().add(stackPane);
-        this.loading = stackPane;
+                rootPane.getChildren().add(stackPane);
+                this.loading = stackPane;
+            }
+        }
     }
 
     public void removeLoading() {
-        rootPane.getChildren().remove(loading);
-        this.loading = null;
+        synchronized (WindowView.class) {
+            if (this.loading != null) {
+                rootPane.getChildren().remove(loading);
+                this.loading = null;
+            }
+        }
     }
 
 }

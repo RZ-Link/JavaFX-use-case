@@ -29,5 +29,17 @@ public class LoadingView implements FxmlView<LoadingViewModel>, Initializable {
                 WindowView.windowView.removeLoading();
             });
         });
+
+        // 重复添加遮罩层，测试效果
+        WindowView.windowView.addLoading();
+        ThreadUtil.execute(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception ignored) {
+            }
+            Platform.runLater(() -> {
+                WindowView.windowView.removeLoading();
+            });
+        });
     }
 }
