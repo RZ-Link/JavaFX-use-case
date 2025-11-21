@@ -1,5 +1,6 @@
 package org.example.demo.view.feedback;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import de.saxsys.mvvmfx.FxmlView;
 import javafx.event.ActionEvent;
@@ -22,8 +23,13 @@ public class DialogView implements FxmlView<DialogViewModel>, Initializable {
     }
 
     public void onPromptButtonClick(ActionEvent actionEvent) {
-        PromptDialog.create("标题", "正文内容", (input) -> {
-            System.out.println(input);
+        PromptDialog.create("标题", "正文内容", (input, stage) -> {
+            if (StrUtil.isBlank(input)) {
+                MessageUtils.error("输入不能为空", stage);
+                return;
+            }
+            MessageUtils.success(input);
+            stage.close();
         });
     }
 

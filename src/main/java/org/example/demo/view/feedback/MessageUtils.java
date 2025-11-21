@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.demo.DemoApplication;
 
@@ -25,7 +26,16 @@ public class MessageUtils {
         open(message, "#f0f9eb",
                 "#e1f3d8",
                 "/org/example/demo/image/message/成功.png",
-                "#67c23a");
+                "#67c23a", null);
+    }
+
+    // 弹出成功消息
+    // 设置消息所属stage。新的stage（比如对话框）可能需要自己设置stage，关闭新的stage同步关闭消息提示。
+    public static void success(String message, Stage stage) {
+        open(message, "#f0f9eb",
+                "#e1f3d8",
+                "/org/example/demo/image/message/成功.png",
+                "#67c23a", stage);
     }
 
     // 弹出错误消息
@@ -33,10 +43,19 @@ public class MessageUtils {
         open(message, "#fef0f0",
                 "#fde2e2",
                 "/org/example/demo/image/message/错误.png",
-                "#f56c6c");
+                "#f56c6c", null);
     }
 
-    private static void open(String message, String backgroundColor, String borderColor, String iconUrl, String textFill) {
+    // 弹出错误消息
+    // 设置消息所属stage。新的stage（比如对话框）可能需要自己设置stage，关闭新的stage同步关闭消息提示。
+    public static void error(String message, Stage stage) {
+        open(message, "#fef0f0",
+                "#fde2e2",
+                "/org/example/demo/image/message/错误.png",
+                "#f56c6c", stage);
+    }
+
+    private static void open(String message, String backgroundColor, String borderColor, String iconUrl, String textFill, Stage stage) {
         Platform.runLater(() -> {
             // 创建消息
             Popup popup = new Popup();
@@ -84,7 +103,12 @@ public class MessageUtils {
             synchronized (MessageUtils.class) {
                 stack.add(popup);
             }
-            popup.show(DemoApplication.stage);
+            // 设置消息所属stage。新的stage（比如对话框）可能需要自己设置stage，关闭新的stage同步关闭消息提示。
+            if (stage != null) {
+                popup.show(stage);
+            } else {
+                popup.show(DemoApplication.stage);
+            }
             fadeIn.play();
 
             // 消息3秒后自动消失

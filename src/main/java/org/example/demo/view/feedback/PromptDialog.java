@@ -10,7 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 // 提交内容对话框
 public class PromptDialog {
@@ -23,13 +23,13 @@ public class PromptDialog {
 
     public Button cancelButton;
 
-    private void initialize(String message, Consumer<String> confirmAction, Stage stage) {
+    private void initialize(String message, BiConsumer<String, Stage> confirmAction, Stage stage) {
+
         // 设置内容
         messageLabel.setText(message);
 
         confirmButton.setOnAction(e -> {
-            confirmAction.accept(inputTextField.getText());
-            stage.close();
+            confirmAction.accept(inputTextField.getText(), stage);
         });
         cancelButton.setOnAction(e -> {
             stage.close();
@@ -41,7 +41,7 @@ public class PromptDialog {
      * @param message       内容
      * @param confirmAction 确认执行的方法
      */
-    public static void create(String title, String message, Consumer<String> confirmAction) {
+    public static void create(String title, String message, BiConsumer<String, Stage> confirmAction) {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(PromptDialog.class.getResource("/org/example/demo/view/feedback/PromptDialog.fxml"));
         try {
